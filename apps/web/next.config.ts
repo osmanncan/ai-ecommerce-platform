@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
             },
         ],
     },
+    transpilePackages: ["@ai-first/shared"],
 };
 
 export default nextConfig;

@@ -9,6 +9,7 @@
         "lint": "next lint"
     },
     "dependencies": {
+        "@ai-first/shared": "*",
         "@supabase/supabase-js": "^2.47.10",
         "groq-sdk": "^0.37.0",
         "lucide-react": "^0.468.0",
