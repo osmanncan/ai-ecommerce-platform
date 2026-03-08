@@ -27,7 +27,7 @@ Next.js · React Native (Expo) · Supabase · Groq AI · TypeScript
 
 | Dashboard | Product Management | Order Management |
 |:---------:|:-------------:|:----------------:|
-| <img src="https://github.com/user-attachments/assets/b2f940aa-5543-4a56-8cfe-12125dbac0f3" width="250"/> | <img src="https://github.com/user-attachments/assets/04642cc3-d03e-48b6-a5c8-00cc9581ff99" width="250"/> | <img src="https://github.com/user-attachments/assets/4a7ebefd-59f9-4703-9a3a-f8b2d4d4a615" width="250"/>
+| <img src="https://github.com/user-attachments/assets/6d74a34a-a7ba-4a89-8398-5d4d31c86dd7" width="250"/> | <img src="https://github.com/user-attachments/assets/12008ccb-1a53-4547-83d9-c02d7d94c478" width="250"/> | <img src="https://github.com/user-attachments/assets/30f843e3-0d2d-4db7-87bd-cba6f1dc1e1d" width="250"/>
 
 </div>
 
