@@ -27,7 +27,7 @@ Next.js · React Native (Expo) · Supabase · Groq AI · TypeScript
 
 | Dashboard | Ürün Yönetimi | Sipariş Yönetimi |
 |:---------:|:-------------:|:----------------:|
-| <img src="https://github.com/user-attachments/assets/b2f940aa-5543-4a56-8cfe-12125dbac0f3" width="250"/> | <img src="https://github.com/user-attachments/assets/4a7ebefd-59f9-4703-9a3a-f8b2d4d4a615" width="250"/> | <img src="https://github.com/user-attachments/assets/04642cc3-d03e-48b6-a5c8-00cc9581ff99" width="250"/> |
+| <img src="https://github.com/user-attachments/assets/b2f940aa-5543-4a56-8cfe-12125dbac0f3" width="250"/> | <img src="https://github.com/user-attachments/assets/04642cc3-d03e-48b6-a5c8-00cc9581ff99" width="250"/> | <img src="https://github.com/user-attachments/assets/4a7ebefd-59f9-4703-9a3a-f8b2d4d4a615" width="250"/>
 
 </div>
 
