@@ -1,7 +1,9 @@
 ﻿import Groq from "groq-sdk";
 import { NextRequest, NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
-import { MOCK_PRODUCTS } from "../../../../../../shared/constants";
+import { MOCK_PRODUCTS } from "@ai-first/shared";
+
+export const dynamic = "force-dynamic";
 
 function buildProductCatalog(products: any[]): string {
     return products.map(p =>
