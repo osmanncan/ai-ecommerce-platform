@@ -25,13 +25,13 @@ export default function MerchantProducts() {
                 <div className="text-center space-y-4">
                     <Lock size={48} strokeWidth={1} className="text-zinc-300 dark:text-zinc-700 mx-auto" />
                     <h1 className="text-xl font-black uppercase tracking-tight text-zinc-900 dark:text-white">
-                        {locale === 'tr' ? 'GiriÅŸ Gerekli' : 'Login Required'}
+                        {locale === 'tr' ? 'Giriş Gerekli' : 'Login Required'}
                     </h1>
                     <p className="text-sm text-zinc-500 font-medium">
-                        {locale === 'tr' ? 'Bu sayfaya eriÅŸmek iÃ§in giriÅŸ yapmalÄ±sÄ±nÄ±z.' : 'You must be logged in to access this page.'}
+                        {locale === 'tr' ? 'Bu sayfaya erişmek için giriş yapmalısınız.' : 'You must be logged in to access this page.'}
                     </p>
                     <Link href="/auth" className="inline-block px-8 py-4 bg-black dark:bg-white text-white dark:text-black font-black uppercase text-[10px] tracking-[0.3em] hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors">
-                        {locale === 'tr' ? 'GiriÅŸ Yap' : 'Sign In'}
+                        {locale === 'tr' ? 'Giriş Yap' : 'Sign In'}
                     </Link>
                 </div>
             </div>
@@ -59,7 +59,7 @@ export default function MerchantProducts() {
                 <nav className="flex-1 px-4 py-4 space-y-1">
                     <button className="w-full flex items-center gap-3 px-4 py-3 text-zinc-400 hover:text-white hover:bg-white/5 rounded-xl transition-all">
                         <LayoutDashboard size={20} />
-                        <span className="text-sm font-bold">{locale === 'tr' ? 'Genel BakÄ±ÅŸ' : 'Overview'}</span>
+                        <span className="text-sm font-bold">{locale === 'tr' ? 'Genel Bakış' : 'Overview'}</span>
                     </button>
                     <button className="w-full flex items-center gap-3 px-4 py-3 bg-indigo-600 text-white shadow-lg shadow-indigo-600/20 rounded-xl transition-all">
                         <Package size={20} />
@@ -67,7 +67,7 @@ export default function MerchantProducts() {
                     </button>
                     <button className="w-full flex items-center gap-3 px-4 py-3 text-zinc-400 hover:text-white hover:bg-white/5 rounded-xl transition-all">
                         <Sparkles size={20} />
-                        <span className="text-sm font-bold">{locale === 'tr' ? 'AI AraÃ§larÄ±' : 'AI Tools'}</span>
+                        <span className="text-sm font-bold">{locale === 'tr' ? 'AI Araçları' : 'AI Tools'}</span>
                     </button>
                     <div className="pt-4 mt-4 border-t border-white/5">
                         <button className="w-full flex items-center gap-3 px-4 py-3 text-zinc-400 hover:text-white hover:bg-white/5 rounded-xl transition-all">
@@ -79,7 +79,7 @@ export default function MerchantProducts() {
 
                 <div className="p-4 border-t border-white/5">
                     <Link href="/" className="flex items-center gap-3 px-4 py-3 text-zinc-500 hover:text-zinc-300 transition-all text-xs font-bold uppercase tracking-widest">
-                        <ArrowLeft size={16} /> {locale === 'tr' ? 'MaÄŸazaya DÃ¶n' : 'Back to Store'}
+                        <ArrowLeft size={16} /> {locale === 'tr' ? 'Mağazaya Dön' : 'Back to Store'}
                     </Link>
                 </div>
             </aside>
@@ -94,16 +94,16 @@ export default function MerchantProducts() {
                 <header className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-8 sm:mb-12">
                     <div>
                         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-zinc-900 dark:text-white uppercase">
-                            {locale === 'tr' ? 'ÃœrÃ¼n Envanteri' : 'Product Inventory'}
+                            {locale === 'tr' ? 'Ürün Envanteri' : 'Product Inventory'}
                         </h1>
                         <p className="text-zinc-400 mt-2 font-medium text-sm">
                             {locale === 'tr'
-                                ? `Toplam ${MOCK_PRODUCTS.length} aktif Ã¼rÃ¼n sistemde kayÄ±tlÄ±.`
+                                ? `Toplam ${MOCK_PRODUCTS.length} aktif ürün sistemde kayıtlı.`
                                 : `${MOCK_PRODUCTS.length} active products registered in the system.`}
                         </p>
                     </div>
                     <button className="flex items-center gap-2 bg-zinc-900 dark:bg-white text-white dark:text-black px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-all shadow-xl shadow-zinc-900/10 dark:shadow-white/5 w-full sm:w-auto justify-center sm:justify-start">
-                        <Plus size={18} /> {locale === 'tr' ? 'Yeni ÃœrÃ¼n Ekle' : 'Add New Product'}
+                        <Plus size={18} /> {locale === 'tr' ? 'Yeni Ürün Ekle' : 'Add New Product'}
                     </button>
                 </header>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
@@ -137,7 +137,7 @@ export default function MerchantProducts() {
                         </div>
                         <div>
                             <div className="text-[10px] font-black text-zinc-400 uppercase tracking-widest mb-1">
-                                {locale === 'tr' ? 'Aktif SipariÅŸler' : 'Active Orders'}
+                                {locale === 'tr' ? 'Aktif Siparişler' : 'Active Orders'}
                             </div>
                             <div className="text-2xl font-black text-zinc-900 dark:text-white">12</div>
                         </div>

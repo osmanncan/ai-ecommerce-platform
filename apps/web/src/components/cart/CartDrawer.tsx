@@ -38,7 +38,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                                 <ShoppingBag size={20} />
                             </div>
                             <h2 className="text-xl font-black tracking-tight uppercase">
-                                {locale === 'tr' ? 'SEPETÄ°M' : 'MY CART'} ({cart.length})
+                                {locale === 'tr' ? 'SEPETİM' : 'MY CART'} ({cart.length})
                             </h2>
                         </div>
                         <button onClick={onClose} className="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full transition-colors">
@@ -53,14 +53,14 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                                     <ShoppingBag size={32} className="text-zinc-200 dark:text-zinc-700" />
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-bold">{locale === 'tr' ? 'Sepetiniz BoÅŸ' : 'Your Cart is Empty'}</h3>
-                                    <p className="text-sm text-zinc-400">{locale === 'tr' ? 'HenÃ¼z bir Ã¼rÃ¼n eklemediniz.' : 'You haven\'t added any products yet.'}</p>
+                                    <h3 className="text-lg font-bold">{locale === 'tr' ? 'Sepetiniz Boş' : 'Your Cart is Empty'}</h3>
+                                    <p className="text-sm text-zinc-400">{locale === 'tr' ? 'Henüz bir ürün eklemediniz.' : 'You haven\'t added any products yet.'}</p>
                                 </div>
                                 <button
                                     onClick={onClose}
                                     className="px-8 py-3 bg-zinc-900 dark:bg-white text-white dark:text-black rounded-xl text-xs font-black uppercase tracking-widest hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-all"
                                 >
-                                    {locale === 'tr' ? 'AlÄ±ÅŸveriÅŸe BaÅŸla' : 'Start Shopping'}
+                                    {locale === 'tr' ? 'Alışverişe Başla' : 'Start Shopping'}
                                 </button>
                             </div>
                         ) : (
@@ -102,7 +102,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                                 </div>
                                 <div className="flex justify-between text-sm font-medium text-zinc-500">
                                     <span>{locale === 'tr' ? 'Kargo' : 'Shipping'}</span>
-                                    <span className="text-green-600 font-bold uppercase tracking-widest text-[10px]">{locale === 'tr' ? 'Ãœcretsiz' : 'Free'}</span>
+                                    <span className="text-green-600 font-bold uppercase tracking-widest text-[10px]">{locale === 'tr' ? 'Ücretsiz' : 'Free'}</span>
                                 </div>
                                 <div className="pt-4 flex justify-between items-end border-t border-zinc-200 dark:border-zinc-700">
                                     <span className="text-xs font-black uppercase tracking-[0.2em]">{locale === 'tr' ? 'Toplam' : 'Total'}</span>
@@ -110,7 +110,7 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                                 </div>
                             </div>
                             <Link href="/checkout" onClick={onClose} className="w-full bg-zinc-900 dark:bg-white text-white dark:text-black py-5 rounded-2xl font-black uppercase text-xs tracking-[0.2em] hover:bg-indigo-600 dark:hover:bg-indigo-500 transition-all shadow-xl shadow-zinc-900/10 dark:shadow-white/5 flex items-center justify-center gap-3 group">
-                                {locale === 'tr' ? 'Ã–demeye GeÃ§' : 'Checkout'} <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                                {locale === 'tr' ? 'Ödemeye Geç' : 'Checkout'} <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                             </Link>
                         </div>
                     )}

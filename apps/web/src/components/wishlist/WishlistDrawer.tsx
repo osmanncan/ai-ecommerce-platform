@@ -38,7 +38,7 @@ export default function WishlistDrawer({ isOpen, onClose }: WishlistDrawerProps)
                                 <Heart size={20} fill="currentColor" />
                             </div>
                             <h2 className="text-xl font-black tracking-tight uppercase">
-                                {locale === 'tr' ? 'FAVORÄ°LERÄ°M' : 'WISHLIST'} ({wishlist.length})
+                                {locale === 'tr' ? 'FAVORİLERİM' : 'WISHLIST'} ({wishlist.length})
                             </h2>
                         </div>
                         <button onClick={onClose} className="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full transition-colors">
@@ -53,14 +53,14 @@ export default function WishlistDrawer({ isOpen, onClose }: WishlistDrawerProps)
                                     <Heart size={32} className="text-zinc-200 dark:text-zinc-700" />
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-bold">{locale === 'tr' ? 'Listeniz BoÅŸ' : 'Your List is Empty'}</h3>
-                                    <p className="text-sm text-zinc-400">{locale === 'tr' ? 'Favori Ã¼rÃ¼nlerinizi burada biriktirin.' : 'Save your favorite products here.'}</p>
+                                    <h3 className="text-lg font-bold">{locale === 'tr' ? 'Listeniz Boş' : 'Your List is Empty'}</h3>
+                                    <p className="text-sm text-zinc-400">{locale === 'tr' ? 'Favori ürünlerinizi burada biriktirin.' : 'Save your favorite products here.'}</p>
                                 </div>
                                 <button
                                     onClick={onClose}
                                     className="px-8 py-3 bg-zinc-900 dark:bg-white text-white dark:text-black rounded-xl text-xs font-black uppercase tracking-widest hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-all"
                                 >
-                                    {locale === 'tr' ? 'ÃœrÃ¼nleri KeÅŸfet' : 'Explore Products'}
+                                    {locale === 'tr' ? 'Ürünleri Keşfet' : 'Explore Products'}
                                 </button>
                             </div>
                         ) : (

@@ -111,7 +111,7 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                         {!user && (
                             <Link href="/auth" onClick={() => setIsMobileMenuOpen(false)}
                                 className="mt-6 py-4 bg-zinc-900 dark:bg-white text-white dark:text-black text-center font-black uppercase text-sm tracking-widest">
-                                {locale === 'tr' ? 'GiriÅŸ Yap' : 'Sign In'}
+                                {locale === 'tr' ? 'Giriş Yap' : 'Sign In'}
                             </Link>
                         )}
                     </div>

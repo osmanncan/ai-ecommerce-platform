@@ -6,7 +6,7 @@
         login: "Sign In",
         logout: "Sign Out",
     },
-    announcement: "Free Express Shipping â€¢ 30-Day Returns",
+    announcement: "Free Express Shipping • 30-Day Returns",
     hero: {
         badge: "AI-Powered Spring '26",
         title_1: "New",

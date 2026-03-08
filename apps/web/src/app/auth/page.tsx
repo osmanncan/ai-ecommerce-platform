@@ -60,13 +60,13 @@ export default function AuthPage() {
         } catch (error: any) {
             const msg = error.message || "";
             if (msg.includes("Invalid login credentials")) {
-                setErrorMsg("E-posta veya ÅŸifre hatalÄ±. LÃ¼tfen tekrar deneyin.");
+                setErrorMsg("E-posta veya şifre hatalı. Lütfen tekrar deneyin.");
             } else if (msg.includes("Email not confirmed")) {
-                setErrorMsg("E-posta adresiniz henÃ¼z onaylanmamÄ±ÅŸ. LÃ¼tfen gelen kutunuzu kontrol edin veya Supabase panelinden 'Confirm email' ayarÄ±nÄ± kapatÄ±n.");
+                setErrorMsg("E-posta adresiniz henüz onaylanmamış. Lütfen gelen kutunuzu kontrol edin veya Supabase panelinden 'Confirm email' ayarını kapatın.");
             } else if (msg.includes("User already registered")) {
-                setErrorMsg("Bu e-posta adresi zaten kayÄ±tlÄ±. GiriÅŸ yapmayÄ± deneyin.");
+                setErrorMsg("Bu e-posta adresi zaten kayıtlı. Giriş yapmayı deneyin.");
             } else {
-                setErrorMsg(msg || "Bir hata oluÅŸtu.");
+                setErrorMsg(msg || "Bir hata oluştu.");
             }
         } finally {
             setIsLoading(false);
@@ -81,21 +81,21 @@ export default function AuthPage() {
 
             <div className="relative w-full max-w-5xl min-h-[500px] md:h-[750px] bg-white dark:bg-[#0a0a0a] border border-zinc-200 dark:border-zinc-800 rounded-[24px] md:rounded-[32px] shadow-[0_32px_64px_-12px_rgba(0,0,0,0.14)] dark:shadow-[0_32px_64px_-12px_rgba(0,0,0,0.4)] overflow-hidden flex flex-col md:flex-row animate-in fade-in slide-in-from-bottom-10 duration-1000">
                 <a href="/" className="absolute top-6 left-6 md:top-10 md:left-10 z-50 inline-flex items-center gap-3 text-zinc-400 hover:text-black dark:hover:text-white transition-all group uppercase text-[9px] font-black tracking-[0.3em]">
-                    <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> MaÄŸazaya DÃ¶n
+                    <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" /> Mağazaya Dön
                 </a>
                 <div className="relative w-full h-full flex flex-col md:flex-row z-10 bg-white dark:bg-[#0a0a0a]">
                     <div className="w-full md:w-1/2 h-full flex flex-col items-center justify-center p-6 sm:p-10 md:p-16">
                         <div className={`w-full max-w-sm space-y-8 md:space-y-12 transition-all duration-700 delay-100 ${isLogin ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12 pointer-events-none absolute md:relative'}`}>
                             <div className="space-y-3">
-                                <h2 className="text-3xl md:text-4xl font-black text-black dark:text-white tracking-tighter uppercase leading-none">Oturum AÃ§</h2>
-                                <p className="text-zinc-400 font-medium text-sm">LÃ¼ksÃ¼n dijital dÃ¼nyasÄ±na tekrar hoÅŸ geldiniz.</p>
+                                <h2 className="text-3xl md:text-4xl font-black text-black dark:text-white tracking-tighter uppercase leading-none">Oturum Aç</h2>
+                                <p className="text-zinc-400 font-medium text-sm">Lüksün dijital dünyasına tekrar hoş geldiniz.</p>
                                 {errorMsg && <p className="text-red-500 font-bold text-xs">{errorMsg}</p>}
                             </div>
 
                             <form onSubmit={handleSubmit} className="space-y-8">
                                 <div className="space-y-4">
                                     <div className="space-y-2">
-                                        <label className="text-[9px] font-black text-zinc-400 uppercase tracking-[0.2em] ml-1">E-POSTA ADRESÄ°</label>
+                                        <label className="text-[9px] font-black text-zinc-400 uppercase tracking-[0.2em] ml-1">E-POSTA ADRESİ</label>
                                         <div className="relative group">
                                             <Mail className="absolute left-0 top-1/2 -translate-y-1/2 text-zinc-300 group-focus-within:text-black dark:group-focus-within:text-white transition-colors" size={18} />
                                             <input
@@ -110,7 +110,7 @@ export default function AuthPage() {
                                     </div>
 
                                     <div className="space-y-2">
-                                        <label className="text-[9px] font-black text-zinc-400 uppercase tracking-[0.2em] ml-1">ÅžÄ°FRE</label>
+                                        <label className="text-[9px] font-black text-zinc-400 uppercase tracking-[0.2em] ml-1">ŞİFRE</label>
                                         <div className="relative group">
                                             <Lock className="absolute left-0 top-1/2 -translate-y-1/2 text-zinc-300 group-focus-within:text-black dark:group-focus-within:text-white transition-colors" size={18} />
                                             <input
@@ -121,7 +121,7 @@ export default function AuthPage() {
                                                 value={password}
                                                 onChange={(e) => setPassword(e.target.value)}
                                                 className="w-full bg-transparent border-b border-zinc-100 dark:border-zinc-800 py-4 pl-8 pr-12 text-black dark:text-white focus:outline-none focus:border-black dark:focus:border-white transition-all font-medium placeholder:text-zinc-200 dark:placeholder:text-zinc-700"
-                                                placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+                                                placeholder="••••••••"
                                             />
                                             <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-0 top-1/2 -translate-y-1/2 text-zinc-300 hover:text-black dark:hover:text-white transition-colors">
                                                 {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
@@ -131,11 +131,11 @@ export default function AuthPage() {
                                 </div>
 
                                     <button disabled={isLoading} className="w-full bg-black dark:bg-white text-white dark:text-black py-5 md:py-6 rounded-full font-black uppercase text-[10px] tracking-[0.3em] hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-all flex items-center justify-center gap-3 active:scale-[0.98] shadow-2xl shadow-black/10 dark:shadow-white/5">
-                                    {isLoading ? <Loader2 className="animate-spin" size={18} /> : "GÄ°RÄ°Åž YAP"}
+                                    {isLoading ? <Loader2 className="animate-spin" size={18} /> : "GİRİŞ YAP"}
                                 </button>
                             </form>
                             <button onClick={() => setIsLogin(false)} className="md:hidden w-full text-center text-xs font-bold text-zinc-400 uppercase tracking-widest hover:text-black dark:hover:text-white transition-colors">
-                                HesabÄ±n yok mu? <span className="underline underline-offset-4">Kaydol</span>
+                                Hesabın yok mu? <span className="underline underline-offset-4">Kaydol</span>
                             </button>
                         </div>
                     </div>
@@ -143,7 +143,7 @@ export default function AuthPage() {
                         <div className={`w-full max-w-sm space-y-8 md:space-y-12 transition-all duration-700 delay-100 ${!isLogin ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12 pointer-events-none absolute md:relative'}`}>
                             <div className="space-y-3">
                                 <h2 className="text-3xl md:text-4xl font-black text-black dark:text-white tracking-tighter uppercase leading-none">Kaydol</h2>
-                                <p className="text-zinc-400 font-medium text-sm">Sizin iÃ§in kÃ¼ratize edilmiÅŸ moda dÃ¼nyasÄ±na katÄ±lÄ±n.</p>
+                                <p className="text-zinc-400 font-medium text-sm">Sizin için küratize edilmiş moda dünyasına katılın.</p>
                                 {errorMsg && <p className="text-red-500 font-bold text-xs">{errorMsg}</p>}
                             </div>
 
@@ -159,13 +159,13 @@ export default function AuthPage() {
                                                 value={name}
                                                 onChange={(e) => setName(e.target.value)}
                                                 className="w-full bg-transparent border-b border-zinc-100 dark:border-zinc-800 py-4 pl-8 pr-4 text-black dark:text-white focus:outline-none focus:border-black dark:focus:border-white transition-all font-medium placeholder:text-zinc-200 dark:placeholder:text-zinc-700"
-                                                placeholder="AdÄ±nÄ±z SoyadÄ±nÄ±z"
+                                                placeholder="Adınız Soyadınız"
                                             />
                                         </div>
                                     </div>
 
                                     <div className="space-y-2">
-                                        <label className="text-[9px] font-black text-zinc-400 uppercase tracking-[0.2em] ml-1">E-POSTA ADRESÄ°</label>
+                                        <label className="text-[9px] font-black text-zinc-400 uppercase tracking-[0.2em] ml-1">E-POSTA ADRESİ</label>
                                         <div className="relative group">
                                             <Mail className="absolute left-0 top-1/2 -translate-y-1/2 text-zinc-300 group-focus-within:text-black dark:group-focus-within:text-white transition-colors" size={18} />
                                             <input
@@ -180,7 +180,7 @@ export default function AuthPage() {
                                     </div>
 
                                     <div className="space-y-2">
-                                        <label className="text-[9px] font-black text-zinc-400 uppercase tracking-[0.2em] ml-1">ÅžÄ°FRE</label>
+                                        <label className="text-[9px] font-black text-zinc-400 uppercase tracking-[0.2em] ml-1">ŞİFRE</label>
                                         <div className="relative group">
                                             <Lock className="absolute left-0 top-1/2 -translate-y-1/2 text-zinc-300 group-focus-within:text-black dark:group-focus-within:text-white transition-colors" size={18} />
                                             <input
@@ -191,18 +191,18 @@ export default function AuthPage() {
                                                 value={password}
                                                 onChange={(e) => setPassword(e.target.value)}
                                                 className="w-full bg-transparent border-b border-zinc-100 dark:border-zinc-800 py-4 pl-8 pr-4 text-black dark:text-white focus:outline-none focus:border-black dark:focus:border-white transition-all font-medium placeholder:text-zinc-200 dark:placeholder:text-zinc-700"
-                                                placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+                                                placeholder="••••••••"
                                             />
                                         </div>
                                     </div>
                                 </div>
 
                                 <button disabled={isLoading} className="w-full bg-black dark:bg-white text-white dark:text-black py-5 md:py-6 rounded-full font-black uppercase text-[10px] tracking-[0.3em] hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-all flex items-center justify-center gap-3 active:scale-[0.98]">
-                                    {isLoading ? <Loader2 className="animate-spin" size={18} /> : "HESAP OLUÅžTUR"}
+                                    {isLoading ? <Loader2 className="animate-spin" size={18} /> : "HESAP OLUŞTUR"}
                                 </button>
                             </form>
                             <button onClick={() => setIsLogin(true)} className="md:hidden w-full text-center text-xs font-bold text-zinc-400 uppercase tracking-widest hover:text-black dark:hover:text-white transition-colors">
-                                Zaten Ã¼ye misin? <span className="underline underline-offset-4">GiriÅŸ Yap</span>
+                                Zaten üye misin? <span className="underline underline-offset-4">Giriş Yap</span>
                             </button>
                         </div>
                     </div>
@@ -215,13 +215,13 @@ export default function AuthPage() {
 
                         <div className="space-y-6">
                             <h2 className="text-3xl font-black text-white tracking-[0.2em] uppercase leading-none">
-                                {isLogin ? "KeÅŸfet" : "Geri DÃ¶n"}
+                                {isLogin ? "Keşfet" : "Geri Dön"}
                             </h2>
                             <div className="w-12 h-[1px] bg-white/20 mx-auto" />
                             <p className="text-zinc-500 font-medium max-w-[260px] mx-auto leading-relaxed text-sm">
                                 {isLogin
-                                    ? "HenÃ¼z Ã¼ye deÄŸil misiniz? AURA topluluÄŸuna katÄ±lmak iÃ§in kaydolun."
-                                    : "KiÅŸisel stil profilinize ve favorilerinize ulaÅŸmak iÃ§in giriÅŸ yapÄ±n."
+                                    ? "Henüz üye değil misiniz? AURA topluluğuna katılmak için kaydolun."
+                                    : "Kişisel stil profilinize ve favorilerinize ulaşmak için giriş yapın."
                                 }
                             </p>
                         </div>
@@ -230,7 +230,7 @@ export default function AuthPage() {
                             onClick={() => setIsLogin(!isLogin)}
                             className="px-14 py-5 border-[0.5px] border-white/20 hover:border-white/60 text-white rounded-full font-bold uppercase text-[9px] tracking-[0.4em] transition-all hover:bg-white/5 active:scale-95"
                         >
-                            {isLogin ? "Kaydol" : "GiriÅŸ Yap"}
+                            {isLogin ? "Kaydol" : "Giriş Yap"}
                         </button>
                     </div>
                     <div className="absolute top-1/2 -left-px w-px h-32 bg-gradient-to-b from-transparent via-white/10 to-transparent" />

@@ -13,17 +13,17 @@ import {
 
 export default function AdminDashboard() {
     const stats = [
-        { label: "Toplam SatÄ±ÅŸ", value: "â‚º142.950", icon: DollarSign, trend: "+12.5%", isPositive: true },
-        { label: "SipariÅŸ SayÄ±sÄ±", value: "324", icon: ShoppingBag, trend: "+8.2%", isPositive: true },
-        { label: "Yeni MÃ¼ÅŸteriler", value: "48", icon: Users, trend: "+14.6%", isPositive: true },
-        { label: "Ä°ade OranÄ±", value: "%1.2", icon: TrendingUp, trend: "-2.4%", isPositive: false },
+        { label: "Toplam Satış", value: "â‚º142.950", icon: DollarSign, trend: "+12.5%", isPositive: true },
+        { label: "Sipariş Sayısı", value: "324", icon: ShoppingBag, trend: "+8.2%", isPositive: true },
+        { label: "Yeni Müşteriler", value: "48", icon: Users, trend: "+14.6%", isPositive: true },
+        { label: "İade Oranı", value: "%1.2", icon: TrendingUp, trend: "-2.4%", isPositive: false },
     ];
 
     const recentOrders = [
-        { id: "#AURA-8F2D", customer: "Ahmet YÄ±lmaz", date: "2 dakika Ã¶nce", amount: "â‚º4.250", status: "HazÄ±rlanÄ±yor", color: "blue" },
-        { id: "#AURA-9A1C", customer: "AyÅŸe Kaya", date: "15 dakika Ã¶nce", amount: "â‚º1.890", status: "Ã–dendi", color: "green" },
-        { id: "#AURA-7B4E", customer: "Mehmet Demir", date: "1 saat Ã¶nce", amount: "â‚º12.400", status: "KargolandÄ±", color: "orange" },
-        { id: "#AURA-2D9F", customer: "Zeynep Aras", date: "3 saat Ã¶nce", amount: "â‚º850", status: "TamamlandÄ±", color: "emerald" },
+        { id: "#AURA-8F2D", customer: "Ahmet Yılmaz", date: "2 dakika önce", amount: "â‚º4.250", status: "Hazırlanıyor", color: "blue" },
+        { id: "#AURA-9A1C", customer: "Ayşe Kaya", date: "15 dakika önce", amount: "â‚º1.890", status: "Ödendi", color: "green" },
+        { id: "#AURA-7B4E", customer: "Mehmet Demir", date: "1 saat önce", amount: "â‚º12.400", status: "Kargolandı", color: "orange" },
+        { id: "#AURA-2D9F", customer: "Zeynep Aras", date: "3 saat önce", amount: "â‚º850", status: "Tamamlandı", color: "emerald" },
     ];
 
     return (
@@ -31,12 +31,12 @@ export default function AdminDashboard() {
             <div className="flex justify-between items-end">
                 <div>
                     <h1 className="text-3xl font-black tracking-tighter uppercase text-zinc-900 leading-none">Dashboard</h1>
-                    <p className="text-sm font-medium text-zinc-400 mt-2 italic leading-relaxed">Ä°statistikleri ve gÃ¼nlÃ¼k operasyonlarÄ± buradan yÃ¶netin.</p>
+                    <p className="text-sm font-medium text-zinc-400 mt-2 italic leading-relaxed">İstatistikleri ve günlük operasyonları buradan yönetin.</p>
                 </div>
                 <div className="flex gap-3">
                     <button className="px-6 py-3 bg-white border border-zinc-200 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-zinc-50 transition-colors">Rapor Al</button>
                     <button className="px-6 py-3 bg-zinc-900 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-zinc-800 transition-colors flex items-center gap-2 shadow-xl shadow-zinc-900/10">
-                        <Sparkles size={14} /> Yeni ÃœrÃ¼n Ekle
+                        <Sparkles size={14} /> Yeni Ürün Ekle
                     </button>
                 </div>
             </div>
@@ -60,15 +60,15 @@ export default function AdminDashboard() {
             <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
                 <div className="xl:col-span-2 bg-white rounded-3xl border border-zinc-200 overflow-hidden shadow-sm">
                     <div className="p-8 border-b border-zinc-100 flex justify-between items-center">
-                        <h3 className="text-sm font-black uppercase tracking-[0.2em] text-zinc-900">Son SipariÅŸler</h3>
-                        <button className="text-[10px] font-black uppercase tracking-widest text-zinc-400 hover:text-black">Hepsini GÃ¶r</button>
+                        <h3 className="text-sm font-black uppercase tracking-[0.2em] text-zinc-900">Son Siparişler</h3>
+                        <button className="text-[10px] font-black uppercase tracking-widest text-zinc-400 hover:text-black">Hepsini Gör</button>
                     </div>
                     <div className="overflow-x-auto">
                         <table className="w-full">
                             <thead className="bg-zinc-50">
                                 <tr>
                                     <th className="text-left py-5 px-8 text-[10px] font-black uppercase tracking-widest text-zinc-400">ID</th>
-                                    <th className="text-left py-5 px-8 text-[10px] font-black uppercase tracking-widest text-zinc-400">MÃ¼ÅŸteri</th>
+                                    <th className="text-left py-5 px-8 text-[10px] font-black uppercase tracking-widest text-zinc-400">Müşteri</th>
                                     <th className="text-left py-5 px-8 text-[10px] font-black uppercase tracking-widest text-zinc-400">Tutar</th>
                                     <th className="text-left py-5 px-8 text-[10px] font-black uppercase tracking-widest text-zinc-400">Durum</th>
                                     <th className="text-left py-5 px-8 text-[10px] font-black uppercase tracking-widest text-zinc-400">Tarih</th>
@@ -104,7 +104,7 @@ export default function AdminDashboard() {
                 </div>
                 <div className="bg-white rounded-3xl border border-zinc-200 overflow-hidden shadow-sm">
                     <div className="p-8 border-b border-zinc-100">
-                        <h3 className="text-sm font-black uppercase tracking-[0.2em] text-zinc-900">En Ã‡ok Satanlar</h3>
+                        <h3 className="text-sm font-black uppercase tracking-[0.2em] text-zinc-900">En Çok Satanlar</h3>
                     </div>
                     <div className="p-8 space-y-6">
                         {[1, 2, 3, 4].map((i) => (
@@ -113,8 +113,8 @@ export default function AdminDashboard() {
                                     <img src={`https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=200&h=300&fit=crop`} alt="Product" className="w-full h-full object-cover" />
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                    <h4 className="text-sm font-bold text-zinc-900 truncate uppercase tracking-tight">ÃœrÃ¼n AdÄ± Gelecek</h4>
-                                    <p className="text-[10px] text-zinc-400 font-bold uppercase tracking-widest">Giyim â€¢ 42 SatÄ±ÅŸ</p>
+                                    <h4 className="text-sm font-bold text-zinc-900 truncate uppercase tracking-tight">Ürün Adı Gelecek</h4>
+                                    <p className="text-[10px] text-zinc-400 font-bold uppercase tracking-widest">Giyim • 42 Satış</p>
                                 </div>
                                 <div className="text-right">
                                     <p className="text-sm font-black text-zinc-900">â‚º{450 * (5 - i)}</p>

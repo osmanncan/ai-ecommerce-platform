@@ -24,9 +24,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
     const menuItems = [
         { name: "Dashboard", icon: LayoutDashboard, path: "/admin" },
-        { name: "SipariÅŸler", icon: ShoppingBag, path: "/admin/orders" },
-        { name: "ÃœrÃ¼n YÃ¶netimi", icon: Box, path: "/admin/products" },
-        { name: "MÃ¼ÅŸteriler", icon: Users, path: "/admin/customers" },
+        { name: "Siparişler", icon: ShoppingBag, path: "/admin/orders" },
+        { name: "Ürün Yönetimi", icon: Box, path: "/admin/products" },
+        { name: "Müşteriler", icon: Users, path: "/admin/customers" },
         { name: "Ayarlar", icon: Settings, path: "/admin/settings" },
     ];
 
@@ -63,7 +63,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                             className="flex items-center gap-4 px-4 py-4 w-full text-zinc-500 hover:text-red-400 text-sm font-bold transition-colors"
                         >
                             <LogOut size={20} />
-                            Ã‡Ä±kÄ±ÅŸ Yap
+                            Çıkış Yap
                         </button>
                     </div>
                 </div>
@@ -78,7 +78,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                         <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400" size={18} />
                         <input
                             type="text"
-                            placeholder="SipariÅŸ, Ã¼rÃ¼n veya mÃ¼ÅŸteri ara..."
+                            placeholder="Sipariş, ürün veya müşteri ara..."
                             className="w-full bg-zinc-100 border-none rounded-2xl py-3 pl-12 pr-4 text-sm focus:ring-2 focus:ring-black/5"
                         />
                     </div>
@@ -92,7 +92,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                         <div className="flex items-center gap-3 group cursor-pointer">
                             <div className="text-right">
                                 <p className="text-xs font-black uppercase tracking-tight">Osmancan</p>
-                                <p className="text-[10px] text-zinc-400 font-bold uppercase tracking-widest">YÃ¶netici</p>
+                                <p className="text-[10px] text-zinc-400 font-bold uppercase tracking-widest">Yönetici</p>
                             </div>
                             <div className="w-10 h-10 bg-zinc-100 rounded-full overflow-hidden border-2 border-transparent group-hover:border-black transition-all">
                                 <img src="https://ui-avatars.com/api/?name=Osmancan&background=000&color=fff" alt="Profile" />

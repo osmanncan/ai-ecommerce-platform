@@ -83,7 +83,7 @@ function ProductCard({ product }: { product: Product }) {
                             <a
                                 href={`/product/${product.id}`}
                                 className="p-2.5 hover:bg-zinc-200 dark:hover:bg-zinc-800 rounded-lg transition-colors"
-                                title="ÃœrÃ¼nÃ¼ Ä°ncele"
+                                title="Ürünü İncele"
                             >
                                 <ExternalLink size={14} className="text-zinc-500" />
                             </a>
@@ -99,7 +99,7 @@ export default function AIStylist() {
     const { locale, t } = useAppContext();
 
     const welcomeMessage = locale === 'tr'
-        ? "Merhaba! Ben AURA'nÄ±n yapay zeka destekli stil danÄ±ÅŸmanÄ±yÄ±m. Size Ã¶zel kombin Ã¶nerileri, kumaÅŸ tavsiyeleri ve stil rehberliÄŸi sunabilirim. BugÃ¼n size nasÄ±l yardÄ±mcÄ± olabilirim?"
+        ? "Merhaba! Ben AURA'nın yapay zeka destekli stil danışmanıyım. Size özel kombin önerileri, kumaş tavsiyeleri ve stil rehberliği sunabilirim. Bugün size nasıl yardımcı olabilirim?"
         : "Hello! I'm AURA's AI-powered style consultant. I can offer personalized outfit suggestions, fabric recommendations and style guidance. How can I help you today?";
 
     const [messages, setMessages] = useState<Message[]>([
@@ -140,7 +140,7 @@ export default function AIStylist() {
             const data = await res.json();
 
             if (!res.ok) {
-                throw new Error(data.error || "Bir hata oluÅŸtu");
+                throw new Error(data.error || "Bir hata oluştu");
             }
 
             if (data.products && data.products.length > 0) {
@@ -153,7 +153,7 @@ export default function AIStylist() {
             setMessages(prev => [...prev, {
                 role: "assistant",
                 content: locale === 'tr'
-                    ? "ÃœzgÃ¼nÃ¼m, ÅŸu an yanÄ±t Ã¼retemiyorum. LÃ¼tfen tekrar deneyin."
+                    ? "Üzgünüm, şu an yanıt üretemiyorum. Lütfen tekrar deneyin."
                     : "Sorry, I can't generate a response right now. Please try again."
             }]);
         } finally {
@@ -169,7 +169,7 @@ export default function AIStylist() {
     };
 
     const quickPrompts = locale === 'tr'
-        ? ["DÃ¼ÄŸÃ¼n iÃ§in kombin Ã¶ner", "GÃ¼nlÃ¼k ÅŸÄ±k bir stil istiyorum", "Ofis kÄ±yafeti tavsiyesi", "Ä°lk buluÅŸma iÃ§in ne giymeliyim?"]
+        ? ["Düğün için kombin öner", "Günlük şık bir stil istiyorum", "Ofis kıyafeti tavsiyesi", "İlk buluşma için ne giymeliyim?"]
         : ["Suggest a wedding outfit", "I want a casual chic style", "Office wear advice", "What to wear on a first date?"];
 
     return (
@@ -185,18 +185,18 @@ export default function AIStylist() {
                         </div>
                         <div>
                             <h1 className="text-sm sm:text-lg font-black tracking-tight uppercase">
-                                {locale === 'tr' ? 'AI Stil DanÄ±ÅŸmanÄ±' : 'AI Style Consultant'}
+                                {locale === 'tr' ? 'AI Stil Danışmanı' : 'AI Style Consultant'}
                             </h1>
                             <div className="flex items-center gap-1.5">
                                 <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
                                 <p className="text-[9px] sm:text-[10px] text-zinc-400 font-bold uppercase tracking-wider">
-                                    AURA AI â€¢ {locale === 'tr' ? 'Ã‡evrimiÃ§i' : 'Online'}
+                                    AURA AI • {locale === 'tr' ? 'Çevrimiçi' : 'Online'}
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <button onClick={handleReset} className="p-2.5 hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-xl text-zinc-500 transition-colors" title={locale === 'tr' ? 'Sohbeti SÄ±fÄ±rla' : 'Reset Chat'}>
+                <button onClick={handleReset} className="p-2.5 hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-xl text-zinc-500 transition-colors" title={locale === 'tr' ? 'Sohbeti Sıfırla' : 'Reset Chat'}>
                     <RotateCcw size={18} />
                 </button>
             </header>
@@ -267,7 +267,7 @@ export default function AIStylist() {
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
                             onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                            placeholder={locale === 'tr' ? "Stiliniz hakkÄ±nda bir ÅŸey sorun..." : "Ask something about your style..."}
+                            placeholder={locale === 'tr' ? "Stiliniz hakkında bir şey sorun..." : "Ask something about your style..."}
                             disabled={isLoading}
                             className="flex-1 bg-zinc-100 dark:bg-[#111] border border-zinc-200 dark:border-zinc-800 rounded-2xl pl-6 pr-16 py-5 focus:outline-none focus:ring-2 focus:ring-zinc-900/10 dark:focus:ring-white/10 focus:border-zinc-400 dark:focus:border-zinc-600 transition-all text-sm font-medium placeholder:text-zinc-400 dark:placeholder:text-zinc-600 disabled:opacity-50"
                         />
