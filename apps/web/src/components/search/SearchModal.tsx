@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useRef, useEffect, useMemo } from "react";
 import Link from "next/link";
@@ -32,7 +32,6 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
         };
     }, [onClose, isOpen]);
 
-    // Real text search filtering
     const searchResults = useMemo(() => {
         if (!searchQuery.trim() || searchQuery.length < 2) return [];
         const query = searchQuery.toLowerCase();
@@ -72,7 +71,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                         autoFocus
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        placeholder={locale === 'tr' ? "Koleksiyonda ara veya görsel yükle..." : "Search collection or upload image..."}
+                        placeholder={locale === 'tr' ? "Koleksiyonda ara veya gÃ¶rsel yÃ¼kle..." : "Search collection or upload image..."}
                         className="flex-1 bg-transparent border-none outline-none text-lg sm:text-2xl font-bold text-zinc-900 dark:text-white placeholder:text-zinc-300 dark:placeholder:text-zinc-600 tracking-tight"
                     />
                     <button
@@ -84,19 +83,18 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                 </div>
 
                 <div className="p-4 sm:p-10 max-h-[60vh] overflow-y-auto">
-                    {/* Search Results */}
                     {searchQuery.length >= 2 && !selectedImage && (
                         <div className="space-y-6">
                             {searchResults.length === 0 ? (
                                 <div className="text-center py-12">
                                     <p className="text-zinc-400 text-sm font-medium">
-                                        {locale === 'tr' ? `"${searchQuery}" için sonuç bulunamadı.` : `No results for "${searchQuery}".`}
+                                        {locale === 'tr' ? `"${searchQuery}" iÃ§in sonuÃ§ bulunamadÄ±.` : `No results for "${searchQuery}".`}
                                     </p>
                                 </div>
                             ) : (
                                 <>
                                     <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400">
-                                        {searchResults.length} {locale === 'tr' ? 'sonuç bulundu' : 'results found'}
+                                        {searchResults.length} {locale === 'tr' ? 'sonuÃ§ bulundu' : 'results found'}
                                     </h4>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         {searchResults.map((product) => (
@@ -121,8 +119,6 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                             )}
                         </div>
                     )}
-
-                    {/* Default State */}
                     {!selectedImage && searchQuery.length < 2 && (
                         <div className="grid md:grid-cols-2 gap-10">
                             <div
@@ -134,10 +130,10 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                                 </div>
                                 <div className="text-center">
                                     <h3 className="text-lg font-black uppercase tracking-tight mb-1">
-                                        {locale === 'tr' ? 'Görsel Arama' : 'Visual Search'}
+                                        {locale === 'tr' ? 'GÃ¶rsel Arama' : 'Visual Search'}
                                     </h3>
                                     <p className="text-zinc-400 text-sm font-medium">
-                                        {locale === 'tr' ? 'Fotoğraf sürükleyin veya seçin' : 'Drag or select a photo'}
+                                        {locale === 'tr' ? 'FotoÄŸraf sÃ¼rÃ¼kleyin veya seÃ§in' : 'Drag or select a photo'}
                                     </p>
                                 </div>
                                 <input
@@ -152,10 +148,10 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                             <div className="space-y-8">
                                 <div>
                                     <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 mb-6 flex items-center gap-2">
-                                        <Sparkles size={12} className="text-indigo-500" /> {locale === 'tr' ? 'Popüler Aramalar' : 'Popular Searches'}
+                                        <Sparkles size={12} className="text-indigo-500" /> {locale === 'tr' ? 'PopÃ¼ler Aramalar' : 'Popular Searches'}
                                     </h4>
                                     <div className="flex flex-wrap gap-2">
-                                        {(locale === 'tr' ? ['Deri Ceket', 'Minimal Saat', 'Keten Üst', 'Premium Bot'] : ['Leather Jacket', 'Watch', 'Linen Top', 'Premium Boot']).map(tag => (
+                                        {(locale === 'tr' ? ['Deri Ceket', 'Minimal Saat', 'Keten Ãœst', 'Premium Bot'] : ['Leather Jacket', 'Watch', 'Linen Top', 'Premium Boot']).map(tag => (
                                             <button key={tag} onClick={() => setSearchQuery(tag)} className="px-5 py-2.5 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-900 dark:hover:bg-white hover:text-white dark:hover:text-black rounded-xl text-xs font-bold transition-all uppercase tracking-widest text-zinc-600 dark:text-zinc-400">
                                                 {tag}
                                             </button>
@@ -165,8 +161,6 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                             </div>
                         </div>
                     )}
-
-                    {/* Analyzing State */}
                     {isAnalyzing && (
                         <div className="py-20 flex flex-col items-center justify-center gap-8">
                             <div className="relative">
@@ -181,13 +175,11 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                                     </span>
                                 </div>
                                 <p className="text-zinc-400 text-sm font-medium uppercase tracking-tight">
-                                    {locale === 'tr' ? 'Koleksiyon taranıyor, mükemmel eşleşmeler bulunuyor...' : 'Scanning collection, finding perfect matches...'}
+                                    {locale === 'tr' ? 'Koleksiyon taranÄ±yor, mÃ¼kemmel eÅŸleÅŸmeler bulunuyor...' : 'Scanning collection, finding perfect matches...'}
                                 </p>
                             </div>
                         </div>
                     )}
-
-                    {/* Visual Search Results */}
                     {!isAnalyzing && selectedImage && (
                         <div className="space-y-10">
                             <div className="flex items-center justify-between bg-zinc-50 dark:bg-zinc-900 p-6 rounded-[28px]">
@@ -197,9 +189,9 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                                     </div>
                                     <div>
                                         <span className="text-xs font-black text-zinc-400 uppercase tracking-widest block mb-1">
-                                            {locale === 'tr' ? 'Görsel Sorgusu' : 'Visual Query'}
+                                            {locale === 'tr' ? 'GÃ¶rsel Sorgusu' : 'Visual Query'}
                                         </span>
-                                        <span className="text-sm font-bold">{locale === 'tr' ? 'Fotoğrafınız için akıllı eşleşmeler' : 'Smart matches for your photo'}</span>
+                                        <span className="text-sm font-bold">{locale === 'tr' ? 'FotoÄŸrafÄ±nÄ±z iÃ§in akÄ±llÄ± eÅŸleÅŸmeler' : 'Smart matches for your photo'}</span>
                                     </div>
                                 </div>
                                 <button
@@ -223,7 +215,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                                         </div>
                                         <div className="flex-1 min-w-0">
                                             <div className="text-[10px] font-black text-indigo-500 uppercase tracking-widest mb-1">
-                                                {locale === 'tr' ? '~%94 Eşleşme' : '~94% Match'}
+                                                {locale === 'tr' ? '~%94 EÅŸleÅŸme' : '~94% Match'}
                                             </div>
                                             <h5 className="font-bold text-base truncate uppercase tracking-tight">{product.name}</h5>
                                             <span className="text-sm font-black tracking-tight">{product.price} TL</span>

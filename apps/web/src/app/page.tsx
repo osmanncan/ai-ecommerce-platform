@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -51,7 +51,6 @@ export default function Home() {
 
     return (
         <main className="min-h-screen bg-[#fafafa] dark:bg-[#050505] text-zinc-900 dark:text-zinc-50 transition-colors duration-500 selection:bg-black dark:selection:bg-white selection:text-white dark:selection:text-black font-sans">
-            {/* --- TOP ANNOUNCEMENT --- */}
             <div className="bg-zinc-900 dark:bg-zinc-100 text-white dark:text-black py-2.5 text-center transition-colors">
                 <p className="text-[10px] md:text-xs font-bold tracking-widest uppercase">
                     {t.announcement}
@@ -59,8 +58,6 @@ export default function Home() {
             </div>
 
             <Navbar scrollY={scrollY} />
-
-            {/* --- HERO: High Fashion + Silent AI --- */}
             <section className="relative px-4 sm:px-8 pt-6 pb-24">
                 <div className="w-full h-[80vh] md:h-[85vh] relative rounded-3xl overflow-hidden bg-zinc-200 dark:bg-zinc-800">
                     <Image
@@ -72,7 +69,6 @@ export default function Home() {
                         sizes="100vw"
                         style={{ objectFit: "cover", objectPosition: "top" }}
                     />
-                    {/* Subtle Gradient overlay for text readability */}
                     <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
 
                     <div className="absolute inset-0 p-8 md:p-16 flex flex-col justify-end">
@@ -99,8 +95,6 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-
-            {/* --- TRENDING GRID: Cinematic Interactive Cards --- */}
             <section className="py-24 px-6 sm:px-12 bg-white dark:bg-[#0a0a0a] transition-colors duration-500 mx-4 sm:mx-8 -mt-16 relative z-10 rounded-[30px] shadow-xl shadow-black/5 dark:shadow-white/5">
                 <div className="max-w-screen-2xl mx-auto space-y-16">
                     <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-zinc-200 dark:border-zinc-800 pb-10">
@@ -134,14 +128,10 @@ export default function Home() {
                                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                                         />
                                     </Link>
-
-                                    {/* Subtle AI Match Badge on Hover */}
                                     <div className={`absolute top-4 left-4 flex items-center gap-2 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm px-3 py-1.5 rounded-full transition-all duration-300 sm:${hoveredProduct === product.id ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'} opacity-100 sm:opacity-0 sm:group-hover:opacity-100`}>
                                         <Sparkles size={12} className="text-zinc-900 dark:text-white" />
                                         <span className="text-[10px] font-bold tracking-widest uppercase">%94 {t.trending.match}</span>
                                     </div>
-
-                                    {/* Actions */}
                                     <div className="absolute bottom-4 inset-x-4 flex items-center justify-between translate-y-0 opacity-100 sm:translate-y-10 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100 transition-all duration-300 ease-out">
                                         <button
                                             onClick={(e) => { e.stopPropagation(); toggleWishlist(product.id as string); }}
@@ -169,8 +159,6 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-
-            {/* --- MOOD & AI INTEGRATION: Sleek & Integrated --- */}
             <section className="py-32 px-6 sm:px-12">   
                 <div className="max-w-screen-2xl mx-auto space-y-20">
                     <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
@@ -182,8 +170,6 @@ export default function Home() {
                                 {t.mood.subtitle}
                             </p>
                         </div>
-
-                        {/* Minimalist Mood Selector */}
                         <div className="flex flex-wrap gap-2">
                             {moods.map(m => (
                                 <button
@@ -201,7 +187,6 @@ export default function Home() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {/* The Curator Note - Blends in as a card */}
                         <div className="bg-zinc-100 dark:bg-[#111] rounded-3xl p-10 flex flex-col justify-between">
                             <div className="space-y-6">
                                 <Sparkles size={24} className="text-zinc-400" />
@@ -221,8 +206,6 @@ export default function Home() {
                                 </div>
                             </div>
                         </div>
-
-                        {/* Curated Products */}
                         {curatedProducts.map(p => (
                             <Link key={p.id} href={`/product/${p.id}`} className="group cursor-pointer">
                                 <div className="aspect-[4/5] overflow-hidden rounded-3xl mb-4 bg-zinc-100 dark:bg-zinc-900 relative">
@@ -237,11 +220,8 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-
-            {/* --- REFINED FOOTER: Elegant & Minimal --- */}
             <footer className="bg-white dark:bg-[#0a0a0a] border-t border-zinc-200 dark:border-white/5 pt-24 pb-12 transition-colors duration-500">
                 <div className="max-w-screen-2xl mx-auto px-6 sm:px-12">
-                    {/* The missing Trust Signals, now elegantly in the footer */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-20 border-b border-zinc-200 dark:border-white/5 mb-20 text-center md:text-left">
                         <div className="space-y-2">
                             <h4 className="text-[11px] font-bold uppercase tracking-widest">{t.footer.freeShipping}</h4>

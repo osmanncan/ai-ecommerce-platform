@@ -1,11 +1,10 @@
-"use client";
+﻿"use client";
 
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { supabase } from '@/lib/supabase';
 import { tr } from '@/i18n/tr';
 import { en } from '@/i18n/en';
 
-// --- Types ---
 interface User {
     id: string;
     name: string;
@@ -60,9 +59,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
     const t = locale === 'tr' ? tr : en;
 
-    // Initial Setup & Supabase Auth Listener
     useEffect(() => {
-        // 1. Load Local UI State (Cart, Wishlist, Theme)
         const savedCart = localStorage.getItem('aura_cart');
         const savedWishlist = localStorage.getItem('aura_wishlist');
         const savedTheme = localStorage.getItem('aura_theme') as 'light' | 'dark';
@@ -74,11 +71,9 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         const savedLocale = localStorage.getItem('aura_locale') as 'tr' | 'en';
         if (savedLocale) setLocale(savedLocale);
 
-        // 2. Setup Supabase Auth State Listener
         const fetchSession = async () => {
             const { data: { session } } = await supabase.auth.getSession();
             if (session?.user) {
-                // Fetch profile
                 const { data: profile } = await supabase
                     .from('profiles')
                     .select('*')
@@ -119,7 +114,6 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
         };
     }, []);
 
-    // Unified Theme & LocalStorage Persistence
     useEffect(() => {
         if (!isInitialized) return;
 

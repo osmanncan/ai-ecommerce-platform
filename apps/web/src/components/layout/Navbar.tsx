@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -31,7 +31,6 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                 : "bg-[#fafafa] dark:bg-[#050505] h-16 sm:h-24 border-transparent"
                 }`}>
                 <div className="flex items-center gap-8 lg:gap-16">
-                    {/* Mobile hamburger */}
                     <button
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         className="lg:hidden p-2 -ml-2 min-w-[44px] min-h-[44px] flex items-center justify-center hover:opacity-60 transition-opacity"
@@ -89,8 +88,6 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                     </button>
                 </div>
             </nav>
-
-            {/* Mobile Menu */}
             {isMobileMenuOpen && (
                 <div className="lg:hidden fixed inset-0 top-16 z-40 bg-white dark:bg-[#050505] animate-in fade-in slide-in-from-top-2 duration-200">
                     <div className="flex flex-col px-6 py-8 space-y-1">
@@ -114,7 +111,7 @@ export default function Navbar({ scrollY = 0 }: NavbarProps) {
                         {!user && (
                             <Link href="/auth" onClick={() => setIsMobileMenuOpen(false)}
                                 className="mt-6 py-4 bg-zinc-900 dark:bg-white text-white dark:text-black text-center font-black uppercase text-sm tracking-widest">
-                                {locale === 'tr' ? 'Giriş Yap' : 'Sign In'}
+                                {locale === 'tr' ? 'GiriÅŸ Yap' : 'Sign In'}
                             </Link>
                         )}
                     </div>

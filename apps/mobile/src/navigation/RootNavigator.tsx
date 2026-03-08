@@ -1,7 +1,6 @@
-import React from 'react';
+﻿import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-// Screens
 import LoginScreen from '../screens/auth/LoginScreen';
 import AdminDashboard from '../screens/admin/AdminDashboard';
 import AdminOrders from '../screens/admin/AdminOrders';

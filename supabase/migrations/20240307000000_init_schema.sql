@@ -1,7 +1,5 @@
--- Enable pgvector extension
-CREATE EXTENSION IF NOT EXISTS vector;
+﻿CREATE EXTENSION IF NOT EXISTS vector;
 
--- Products table
 CREATE TABLE products (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   name TEXT NOT NULL,
@@ -14,7 +12,6 @@ CREATE TABLE products (
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
--- Profiles table (for users)
 CREATE TABLE profiles (
   id UUID PRIMARY KEY REFERENCES auth.users ON DELETE CASCADE,
   full_name TEXT,
@@ -22,7 +19,6 @@ CREATE TABLE profiles (
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
--- Orders table
 CREATE TABLE orders (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   user_id UUID REFERENCES auth.users ON DELETE SET NULL,
@@ -31,7 +27,6 @@ CREATE TABLE orders (
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
--- Vector Similarity Search Function
 CREATE OR REPLACE FUNCTION match_products (
   query_embedding VECTOR(1536),
   match_threshold FLOAT,

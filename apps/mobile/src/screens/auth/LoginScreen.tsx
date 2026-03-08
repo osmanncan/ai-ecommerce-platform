@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import {
     View,
     Text,
@@ -63,8 +63,6 @@ export default function LoginScreen({ navigation }: any) {
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 1 }}
             />
-
-            {/* Decorative circles */}
             <View style={styles.decorCircle1} />
             <View style={styles.decorCircle2} />
 
@@ -82,7 +80,6 @@ export default function LoginScreen({ navigation }: any) {
                 style={styles.keyboardView}
             >
                 <View style={styles.content}>
-                    {/* Logo & Branding */}
                     <View style={styles.brandSection}>
                         <View style={styles.logoContainer}>
                             <LinearGradient
@@ -100,8 +97,6 @@ export default function LoginScreen({ navigation }: any) {
                             {t.auth.brandDesc}
                         </Text>
                     </View>
-
-                    {/* Login Form */}
                     <View style={styles.formSection}>
                         <View style={styles.inputContainer}>
                             <View style={styles.inputIcon}>
@@ -156,8 +151,6 @@ export default function LoginScreen({ navigation }: any) {
                             </LinearGradient>
                         </TouchableOpacity>
                     </View>
-
-                    {/* Quick Access */}
                     <View style={styles.quickSection}>
                         <View style={styles.dividerRow}>
                             <View style={styles.dividerLine} />
@@ -233,7 +226,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 
-    // Brand
     brandSection: {
         alignItems: 'center',
         marginBottom: 48,
@@ -275,7 +267,6 @@ const styles = StyleSheet.create({
         fontWeight: '500',
     },
 
-    // Form
     formSection: {
         gap: 14,
         marginBottom: 32,
@@ -328,7 +319,6 @@ const styles = StyleSheet.create({
         letterSpacing: 2,
     },
 
-    // Quick Access
     quickSection: {
         alignItems: 'center',
         gap: 20,

@@ -1,5 +1,4 @@
-export const en = {
-    // Nav
+﻿export const en = {
     nav: {
         studio: "Studio",
         about: "About",
@@ -7,9 +6,7 @@ export const en = {
         login: "Sign In",
         logout: "Sign Out",
     },
-    // Announcement
-    announcement: "Free Express Shipping • 30-Day Returns",
-    // Hero
+    announcement: "Free Express Shipping â€¢ 30-Day Returns",
     hero: {
         badge: "AI-Powered Spring '26",
         title_1: "New",
@@ -18,7 +15,6 @@ export const en = {
         cta: "Explore Collection",
         film: "Campaign Film",
     },
-    // Trending
     trending: {
         title: "Trending Picks",
         subtitle: "The most distinguished pieces on the platform. From the radar of visionaries like you.",
@@ -26,7 +22,6 @@ export const en = {
         match: "Match",
         addToCart: "Add to Cart",
     },
-    // Mood Section
     mood: {
         title_1: "Wearable",
         title_2: "Character",
@@ -39,7 +34,6 @@ export const en = {
         loggedOut: "Sign in for personalized style analysis.",
         moods: ["Minimalist", "Oversized", "Luxury", "Streetwear", "Classic"],
     },
-    // Footer
     footer: {
         tagline: "The synthesis of traditional fashion with artificial intelligence. A better future, a smarter style.",
         freeShipping: "Free Shipping",
@@ -58,7 +52,6 @@ export const en = {
         terms: "Terms of Service",
         rights: "ALL RIGHTS RESERVED.",
     },
-    // Product Detail
     product: {
         back: "Go Back",
         designCodes: "Design Codes",
@@ -81,7 +74,6 @@ export const en = {
         returnLabel: "Return",
         selectSize: "Please select a size.",
     },
-    // Auth
     auth: {
         welcome: "Welcome Back",
         welcomeSub: "Sign in to continue your personalized style experience.",
@@ -95,6 +87,5 @@ export const en = {
         switchToSignup: "Don't have an account? Sign up",
         switchToLogin: "Already have an account? Sign in",
     },
-    // Common
     lang: "EN",
 };

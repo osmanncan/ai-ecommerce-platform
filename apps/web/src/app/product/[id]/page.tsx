@@ -21,7 +21,7 @@ export default function ProductDetailPage() {
 
     useEffect(() => {
         const fetchProduct = async () => {
-            // Try Supabase first
+
             const { data } = await supabase
                 .from('products')
                 .select('*')
@@ -31,7 +31,7 @@ export default function ProductDetailPage() {
             if (data) {
                 setProduct(data);
             } else {
-                // Fallback to mock
+
                 const found = MOCK_PRODUCTS.find(p => p.id === productId);
                 setProduct(found || null);
             }
@@ -72,18 +72,18 @@ export default function ProductDetailPage() {
     return (
         <main className="min-h-screen bg-[#fafafa] dark:bg-[#050505] text-zinc-900 dark:text-zinc-50 font-sans selection:bg-black dark:selection:bg-white selection:text-white dark:selection:text-black">
 
-            {/* Top Navigation */}
+
             <nav className="fixed top-0 left-0 right-0 z-50 px-6 sm:px-12 py-6 flex justify-between items-center bg-white/80 dark:bg-[#050505]/80 backdrop-blur-xl border-b border-zinc-200 dark:border-zinc-900 lg:bg-transparent lg:backdrop-blur-none lg:border-none lg:mix-blend-difference text-black dark:text-white lg:text-white">
                 <Link href="/" className="flex items-center gap-3 uppercase text-[10px] font-black tracking-[0.3em] hover:-translate-x-2 transition-transform">
                     <ArrowLeft size={16} /> <span className="hidden sm:inline">{t.product.back}</span>
                 </Link>
                 <Link href="/" className="text-2xl font-black tracking-tighter uppercase">AURA</Link>
-                <div className="w-20" /> {/* Spacer for centering */}
+                <div className="w-20" />
             </nav>
 
             <div className="flex flex-col lg:flex-row min-h-screen">
 
-                {/* MOBILE ONLY HERO IMAGE */}
+
                 <div className="lg:hidden w-full h-[65vh] relative bg-zinc-100 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 overflow-hidden shrink-0 mt-[72px]">
                     <img
                         src={product.image_url}
@@ -92,10 +92,10 @@ export default function ProductDetailPage() {
                     />
                 </div>
 
-                {/* LEFT: Cinematic Full-Bleed Imagery & Details (Scrollable) */}
+
                 <div className="w-full lg:w-[65%] order-3 lg:order-1 flex flex-col pt-0">
 
-                    {/* DESKTOP ONLY Hero Image */}
+
                     <div className="hidden lg:block w-full h-screen relative bg-zinc-100 dark:bg-zinc-900 overflow-hidden shrink-0">
                         <img
                             src={product.image_url}
@@ -104,10 +104,10 @@ export default function ProductDetailPage() {
                         />
                     </div>
 
-                    {/* Editorial Description Content */}
+
                     <div className="max-w-3xl mx-auto px-6 sm:px-16 py-12 lg:py-24 space-y-16 lg:space-y-24">
 
-                        {/* Material & Concept */}
+
                         <div className="space-y-8">
                             <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-400">{t.product.designCodes}</h3>
                             <h2 className="text-3xl md:text-5xl font-black tracking-tighter leading-tight uppercase">
@@ -118,7 +118,7 @@ export default function ProductDetailPage() {
                             </p>
                         </div>
 
-                        {/* AI Curator's Note */}
+
                         <div className="bg-zinc-100 dark:bg-[#111] rounded-[32px] p-8 md:p-12 border border-black/5 dark:border-white/5 relative overflow-hidden">
                             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-zinc-900 dark:via-white to-transparent opacity-20" />
                             <div className="space-y-6 relative z-10">
@@ -132,7 +132,7 @@ export default function ProductDetailPage() {
                             </div>
                         </div>
 
-                        {/* Accordion Details */}
+
                         <div className="space-y-6 pt-12 border-t border-zinc-200 dark:border-zinc-900">
                             <div className="space-y-2">
                                 <h4 className="text-xs font-bold uppercase tracking-widest">{t.product.fabric}</h4>
@@ -142,11 +142,11 @@ export default function ProductDetailPage() {
                     </div>
                 </div>
 
-                {/* RIGHT: Sticky Checkout Panel */}
+
                 <div className="w-full lg:w-[35%] order-2 lg:order-2 bg-[#fafafa] dark:bg-[#050505] lg:bg-white lg:dark:bg-[#0a0a0a] border-b lg:border-l lg:border-b-0 border-zinc-200 dark:border-zinc-900 relative">
                     <div className="lg:sticky top-0 lg:h-screen lg:overflow-y-auto px-6 sm:px-12 py-10 lg:py-24 flex flex-col no-scrollbar">
 
-                        {/* Product Header */}
+
                         <div className="space-y-4 mb-10 lg:mb-16 mt-0 lg:mt-10">
                             <div className="flex justify-between items-start gap-4">
                                 <div>
@@ -163,7 +163,7 @@ export default function ProductDetailPage() {
                             <p className="text-2xl font-light">{(product.price ?? 0).toLocaleString('tr-TR')} TL</p>
                         </div>
 
-                        {/* Size Selection (If applicable) */}
+
                         {product.category !== 'Aksesuar' && product.category !== 'Saat' && product.category !== 'Çanta' && (
                             <div className="space-y-6 mb-16">
                                 <div className="flex justify-between items-end">
@@ -190,7 +190,7 @@ export default function ProductDetailPage() {
                             </div>
                         )}
 
-                        {/* Action Buttons */}
+
                         <div className="space-y-4 mt-auto">
                             <button
                                 onClick={handleAddToCart}
@@ -208,7 +208,7 @@ export default function ProductDetailPage() {
                             </p>
                         </div>
 
-                        {/* Trust Badges */}
+
                         <div className="grid grid-cols-2 gap-4 mt-12 pt-12 border-t border-zinc-200 dark:border-zinc-900">
                             <div className="flex items-center gap-3 text-zinc-500">
                                 <Truck size={18} strokeWidth={1.5} />
