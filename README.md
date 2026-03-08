@@ -27,18 +27,9 @@ Next.js · React Native (Expo) · Supabase · Groq AI · TypeScript
 
 | Dashboard | Product Management | Order Management |
 |:---------:|:-------------:|:----------------:|
-| <img src="https://github.com/user-attachments/assets/DASHBOARD_IMAGE_ID" width="250"/> | <img src="https://github.com/user-attachments/assets/PRODUCTS_IMAGE_ID" width="250"/> | <img src="https://github.com/user-attachments/assets/ORDERS_IMAGE_ID" width="250"/> |
+| <img src="https://github.com/user-attachments/assets/b2f940aa-5543-4a56-8cfe-12125dbac0f3" width="250"/> | <img src="https://github.com/user-attachments/assets/04642cc3-d03e-48b6-a5c8-00cc9581ff99" width="250"/> | <img src="https://github.com/user-attachments/assets/4a7ebefd-59f9-4703-9a3a-f8b2d4d4a615" width="250"/>
 
 </div>
-
-<!-- 
-  📸 To add images:
-  1. Edit README.md on GitHub (pencil icon)
-  2. Drag and drop screenshots into the editor area
-  3. GitHub will automatically generate a URL
-  4. Replace DASHBOARD_IMAGE_ID, PRODUCTS_IMAGE_ID, ORDERS_IMAGE_ID
-     above with the generated URLs.
--->
 
 ---
 
