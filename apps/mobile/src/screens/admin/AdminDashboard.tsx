@@ -11,6 +11,7 @@ import {
     LogOut
 } from 'lucide-react-native';
 import { supabase } from '../../lib/supabase';
+import { useTranslation } from '../../context/LocalizationContext';
 
 const { width } = Dimensions.get('window');
 
@@ -30,14 +31,16 @@ const StatCard = ({ label, value, trend, isPositive, icon: Icon }: any) => (
 );
 
 export default function AdminDashboard({ navigation }: any) {
+    const { t } = useTranslation();
+
     const handleLogout = async () => {
         Alert.alert(
-            'Çıkış Yap',
-            'Çıkış yapmak istediğinize emin misiniz?',
+            t.dashboard.logoutTitle,
+            t.dashboard.logoutConfirm,
             [
-                { text: 'İptal', style: 'cancel' },
+                { text: t.dashboard.cancel, style: 'cancel' },
                 {
-                    text: 'Çıkış Yap',
+                    text: t.dashboard.logoutTitle,
                     style: 'destructive',
                     onPress: async () => {
                         await supabase.auth.signOut();
@@ -49,10 +52,10 @@ export default function AdminDashboard({ navigation }: any) {
     };
 
     const stats = [
-        { label: "TOPLAM SATIŞ", value: "₺142.950", trend: "+12.5%", isPositive: true, icon: DollarSign },
-        { label: "SİPARİŞ SAYISI", value: "324", trend: "+8.2%", isPositive: true, icon: ShoppingBag },
-        { label: "YENİ MÜŞTERİLER", value: "48", trend: "+14.6%", isPositive: true, icon: Users },
-        { label: "İADE ORANI", value: "%1.2", trend: "-2.4%", isPositive: false, icon: TrendingUp },
+        { label: t.dashboard.stats.totalSales, value: "₺142.950", trend: "+12.5%", isPositive: true, icon: DollarSign },
+        { label: t.dashboard.stats.orderCount, value: "324", trend: "+8.2%", isPositive: true, icon: ShoppingBag },
+        { label: t.dashboard.stats.newCustomers, value: "48", trend: "+14.6%", isPositive: true, icon: Users },
+        { label: t.dashboard.stats.returnRate, value: "%1.2", trend: "-2.4%", isPositive: false, icon: TrendingUp },
     ];
 
     return (
@@ -63,8 +66,8 @@ export default function AdminDashboard({ navigation }: any) {
                     <View style={styles.content}>
                         <View style={styles.header}>
                             <View>
-                                <Text style={styles.title}>DASHBOARD</Text>
-                                <Text style={styles.subtitle}>Günlük operasyonları yönetin.</Text>
+                                <Text style={styles.title}>{t.dashboard.title}</Text>
+                                <Text style={styles.subtitle}>{t.dashboard.subtitle}</Text>
                             </View>
                             <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
                                 <LogOut size={20} color="#ef4444" />
@@ -78,9 +81,9 @@ export default function AdminDashboard({ navigation }: any) {
                         </View>
 
                         <View style={styles.sectionHeader}>
-                            <Text style={styles.sectionTitle}>SON SİPARİŞLER</Text>
+                            <Text style={styles.sectionTitle}>{t.dashboard.recentOrders}</Text>
                             <TouchableOpacity>
-                                <Text style={styles.seeAll}>TÜMÜ</Text>
+                                <Text style={styles.seeAll}>{t.dashboard.seeAll}</Text>
                             </TouchableOpacity>
                         </View>
 
@@ -110,13 +113,13 @@ export default function AdminDashboard({ navigation }: any) {
                                 style={styles.actionButton}
                                 onPress={() => navigation.navigate('AdminProducts')}
                             >
-                                <Text style={styles.actionButtonText}>ÜRÜN YÖNETİMİ</Text>
+                                <Text style={styles.actionButtonText}>{t.dashboard.productManagement}</Text>
                             </TouchableOpacity>
                             <TouchableOpacity
                                 style={styles.actionButton}
                                 onPress={() => navigation.navigate('AdminOrders')}
                             >
-                                <Text style={styles.actionButtonText}>SİPARİŞ YÖNETİMİ</Text>
+                                <Text style={styles.actionButtonText}>{t.dashboard.orderManagement}</Text>
                             </TouchableOpacity>
                         </View>
                     </View>

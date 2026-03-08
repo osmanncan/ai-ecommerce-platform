@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity, Image, TextInput } from 'react-native';
 import { Search, Plus, Filter, MoreHorizontal, ArrowLeft } from 'lucide-react-native';
+import { useTranslation } from '../../context/LocalizationContext';
 
 export default function AdminProducts({ navigation }: any) {
+    const { t } = useTranslation();
     const [products] = useState([
-        { id: "#PROD-001", name: "Premium İpek Gömlek", price: "₺4.250", stock: 12, category: "Giyim", status: "Aktif", image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=200" },
-        { id: "#PROD-002", name: "Daha Kaşmir Palto", price: "₺12.400", stock: 3, category: "Dış Giyim", status: "Düşük Stok", image: "https://images.unsplash.com/photo-1544022613-e87f75a720dc?w=200" },
-        { id: "#PROD-003", name: "Minimalist Deri Çanta", price: "₺8.900", stock: 0, category: "Aksesuar", status: "Tükendi", image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=200" },
+        { id: "#PROD-001", name: "Premium İpek Gömlek", price: "₺4.250", stock: 12, category: "Giyim", status: "active", image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=200" },
+        { id: "#PROD-002", name: "Daha Kaşmir Palto", price: "₺12.400", stock: 3, category: "Dış Giyim", status: "lowStock", image: "https://images.unsplash.com/photo-1544022613-e87f75a720dc?w=200" },
+        { id: "#PROD-003", name: "Minimalist Deri Çanta", price: "₺8.900", stock: 0, category: "Aksesuar", status: "outOfStock", image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=200" },
     ]);
 
     const getStatusStyle = (status: any) => {
         switch (status) {
-            case "Aktif": return { bg: '#f1fde7', text: '#3c7e0b', dot: '#4caf50' };
-            case "Düşük Stok": return { bg: '#fff4e5', text: '#b36d0a', dot: '#ff9800' };
-            case "Tükendi": return { bg: '#ffebee', text: '#c62828', dot: '#f44336' };
-            default: return { bg: '#f5f5f5', text: '#666', dot: '#999' };
+            case "active": return { bg: '#f1fde7', text: '#3c7e0b', dot: '#4caf50', label: t.products.status.active };
+            case "lowStock": return { bg: '#fff4e5', text: '#b36d0a', dot: '#ff9800', label: t.products.status.lowStock };
+            case "outOfStock": return { bg: '#ffebee', text: '#c62828', dot: '#f44336', label: t.products.status.outOfStock };
+            default: return { bg: '#f5f5f5', text: '#666', dot: '#999', label: status };
         }
     };
 
@@ -25,7 +27,7 @@ export default function AdminProducts({ navigation }: any) {
                     <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
                         <ArrowLeft color="#000" size={24} />
                     </TouchableOpacity>
-                    <Text style={styles.title}>ÜRÜN YÖNETİMİ</Text>
+                    <Text style={styles.title}>{t.products.title}</Text>
                     <TouchableOpacity style={styles.addButton}>
                         <Plus color="#fff" size={24} />
                     </TouchableOpacity>
@@ -34,7 +36,7 @@ export default function AdminProducts({ navigation }: any) {
                 <View style={styles.searchBar}>
                     <Search color="#999" size={20} style={styles.searchIcon} />
                     <TextInput
-                        placeholder="Ürün veya kategori ara..."
+                        placeholder={t.products.searchPlaceholder}
                         style={styles.searchInput}
                     />
                     <TouchableOpacity style={styles.filterButton}>
@@ -62,9 +64,9 @@ export default function AdminProducts({ navigation }: any) {
                                         <View style={styles.infoBottom}>
                                             <View style={[styles.statusBadge, { backgroundColor: styles_status.bg }]}>
                                                 <View style={[styles.statusDot, { backgroundColor: styles_status.dot }]} />
-                                                <Text style={[styles.statusText, { color: styles_status.text }]}>{item.status}</Text>
+                                                <Text style={[styles.statusText, { color: styles_status.text }]}>{styles_status.label}</Text>
                                             </View>
-                                            <Text style={styles.stockText}>Stok: {item.stock}</Text>
+                                            <Text style={styles.stockText}>{t.products.stock}: {item.stock}</Text>
                                         </View>
                                     </View>
                                 </View>

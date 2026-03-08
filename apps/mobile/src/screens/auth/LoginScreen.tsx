@@ -13,19 +13,21 @@ import {
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Shield, Mail, Lock, ArrowRight, Zap } from 'lucide-react-native';
+import { Shield, Mail, Lock, ArrowRight, Zap, Globe } from 'lucide-react-native';
 import { supabase } from '../../lib/supabase';
+import { useTranslation } from '../../context/LocalizationContext';
 
 const { width } = Dimensions.get('window');
 
 export default function LoginScreen({ navigation }: any) {
+    const { t, locale, toggleLocale } = useTranslation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
 
     const handleLogin = async () => {
         if (!email || !password) {
-            Alert.alert('Hata', 'E-posta ve şifre alanlarını doldurun.');
+            Alert.alert(t.auth.error, t.auth.errorFill);
             return;
         }
 
@@ -37,12 +39,12 @@ export default function LoginScreen({ navigation }: any) {
             });
 
             if (error) {
-                Alert.alert('Giriş Başarısız', error.message);
+                Alert.alert(t.auth.loginFailed, error.message);
             } else {
                 navigation.replace('AdminDashboard');
             }
         } catch (err) {
-            Alert.alert('Hata', 'Bir sorun oluştu. Tekrar deneyin.');
+            Alert.alert(t.auth.error, t.auth.genericError);
         } finally {
             setLoading(false);
         }
@@ -66,6 +68,15 @@ export default function LoginScreen({ navigation }: any) {
             <View style={styles.decorCircle1} />
             <View style={styles.decorCircle2} />
 
+            <TouchableOpacity
+                style={styles.langToggle}
+                onPress={toggleLocale}
+                activeOpacity={0.7}
+            >
+                <Globe size={16} color="rgba(255,255,255,0.6)" />
+                <Text style={styles.langToggleText}>{locale.toUpperCase()}</Text>
+            </TouchableOpacity>
+
             <KeyboardAvoidingView
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
                 style={styles.keyboardView}
@@ -83,10 +94,10 @@ export default function LoginScreen({ navigation }: any) {
                                 <Shield size={28} color="#fff" />
                             </LinearGradient>
                         </View>
-                        <Text style={styles.brandName}>AURA</Text>
-                        <Text style={styles.brandTag}>ADMIN PANEL</Text>
+                        <Text style={styles.brandName}>{t.auth.brandName}</Text>
+                        <Text style={styles.brandTag}>{t.auth.brandTag}</Text>
                         <Text style={styles.brandDesc}>
-                            Mağazanızı yönetin, siparişleri takip edin{'\n'}ve satışlarınızı analiz edin.
+                            {t.auth.brandDesc}
                         </Text>
                     </View>
 
@@ -98,7 +109,7 @@ export default function LoginScreen({ navigation }: any) {
                             </View>
                             <TextInput
                                 style={styles.input}
-                                placeholder="E-posta adresiniz"
+                                placeholder={t.auth.emailPlaceholder}
                                 placeholderTextColor="#555"
                                 value={email}
                                 onChangeText={setEmail}
@@ -114,7 +125,7 @@ export default function LoginScreen({ navigation }: any) {
                             </View>
                             <TextInput
                                 style={styles.input}
-                                placeholder="Şifreniz"
+                                placeholder={t.auth.passwordPlaceholder}
                                 placeholderTextColor="#555"
                                 value={password}
                                 onChangeText={setPassword}
@@ -138,7 +149,7 @@ export default function LoginScreen({ navigation }: any) {
                                     <ActivityIndicator color="#fff" />
                                 ) : (
                                     <>
-                                        <Text style={styles.loginButtonText}>GİRİŞ YAP</Text>
+                                        <Text style={styles.loginButtonText}>{t.auth.loginButton}</Text>
                                         <ArrowRight size={20} color="#fff" />
                                     </>
                                 )}
@@ -150,7 +161,7 @@ export default function LoginScreen({ navigation }: any) {
                     <View style={styles.quickSection}>
                         <View style={styles.dividerRow}>
                             <View style={styles.dividerLine} />
-                            <Text style={styles.dividerText}>veya</Text>
+                            <Text style={styles.dividerText}>{t.auth.or}</Text>
                             <View style={styles.dividerLine} />
                         </View>
 
@@ -160,7 +171,7 @@ export default function LoginScreen({ navigation }: any) {
                             activeOpacity={0.7}
                         >
                             <Zap size={18} color="#f59e0b" />
-                            <Text style={styles.quickButtonText}>Hızlı Geçiş (Geliştirici)</Text>
+                            <Text style={styles.quickButtonText}>{t.auth.quickAccess}</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -194,6 +205,27 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(139, 92, 246, 0.06)',
         bottom: 100,
         left: -60,
+    },
+    langToggle: {
+        position: 'absolute',
+        top: 60,
+        left: 28,
+        zIndex: 10,
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 6,
+        backgroundColor: 'rgba(255,255,255,0.05)',
+        paddingHorizontal: 12,
+        paddingVertical: 8,
+        borderRadius: 20,
+        borderWidth: 1,
+        borderColor: 'rgba(255,255,255,0.1)',
+    },
+    langToggleText: {
+        color: 'rgba(255,255,255,0.6)',
+        fontSize: 12,
+        fontWeight: '700',
+        letterSpacing: 1,
     },
     content: {
         flex: 1,

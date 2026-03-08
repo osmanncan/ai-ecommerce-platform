@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity, TextInput } from 'react-native';
 import { Search, Filter, ArrowLeft, MoreHorizontal, ShoppingBag } from 'lucide-react-native';
+import { useTranslation } from '../../context/LocalizationContext';
 
 export default function AdminOrders({ navigation }: any) {
+    const { t } = useTranslation();
     const [orders] = useState([
-        { id: "#AURA-8F2D", customer: "Berke Yılmaz", email: "berke@example.com", date: "10 Mart, 14:20", amount: "₺4.250", items: 2, status: "Hazırlanıyor" },
-        { id: "#AURA-9A1C", customer: "Aslı Çelik", email: "asli@example.com", date: "10 Mart, 12:45", amount: "₺1.890", items: 1, status: "Ödendi" },
-        { id: "#AURA-7B4E", customer: "Kaan Aras", email: "kaan@example.com", date: "09 Mart, 18:30", amount: "₺12.400", items: 3, status: "Kargoda" },
-        { id: "#AURA-6D1F", customer: "Zeynep Demir", email: "zeynep@example.com", date: "09 Mart, 11:15", amount: "₺8.900", items: 1, status: "Tamamlandı" },
+        { id: "#AURA-8F2D", customer: "Berke Yılmaz", email: "berke@example.com", date: "10 Mart, 14:20", amount: "₺4.250", items: 2, status: "preparing" },
+        { id: "#AURA-9A1C", customer: "Aslı Çelik", email: "asli@example.com", date: "10 Mart, 12:45", amount: "₺1.890", items: 1, status: "paid" },
+        { id: "#AURA-7B4E", customer: "Kaan Aras", email: "kaan@example.com", date: "09 Mart, 18:30", amount: "₺12.400", items: 3, status: "shipped" },
+        { id: "#AURA-6D1F", customer: "Zeynep Demir", email: "zeynep@example.com", date: "09 Mart, 11:15", amount: "₺8.900", items: 1, status: "completed" },
     ]);
 
     const getStatusStyle = (status: any) => {
         switch (status) {
-            case "Hazırlanıyor": return { bg: '#fff4e5', text: '#b36d0a', dot: '#ff9800' };
-            case "Ödendi": return { bg: '#e8f5e9', text: '#2e7d32', dot: '#4caf50' };
-            case "Kargoda": return { bg: '#e3f2fd', text: '#1565c0', dot: '#2196f3' };
-            case "Tamamlandı": return { bg: '#f5f5f5', text: '#616161', dot: '#9e9e9e' };
-            default: return { bg: '#f5f5f5', text: '#666', dot: '#999' };
+            case "preparing": return { bg: '#fff4e5', text: '#b36d0a', dot: '#ff9800', label: t.orders.status.preparing };
+            case "paid": return { bg: '#e8f5e9', text: '#2e7d32', dot: '#4caf50', label: t.orders.status.paid };
+            case "shipped": return { bg: '#e3f2fd', text: '#1565c0', dot: '#2196f3', label: t.orders.status.shipped };
+            case "completed": return { bg: '#f5f5f5', text: '#616161', dot: '#9e9e9e', label: t.orders.status.completed };
+            default: return { bg: '#f5f5f5', text: '#666', dot: '#999', label: status };
         }
     };
 
@@ -27,7 +29,7 @@ export default function AdminOrders({ navigation }: any) {
                     <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
                         <ArrowLeft color="#000" size={24} />
                     </TouchableOpacity>
-                    <Text style={styles.title}>SİPARİŞ YÖNETİMİ</Text>
+                    <Text style={styles.title}>{t.orders.title}</Text>
                     <View style={styles.placeHolderButton} />
                 </View>
 
@@ -35,7 +37,7 @@ export default function AdminOrders({ navigation }: any) {
                     <View style={styles.searchContainer}>
                         <Search color="#999" size={20} style={styles.searchIcon} />
                         <TextInput
-                            placeholder="Sipariş ID veya Müşteri..."
+                            placeholder={t.orders.searchPlaceholder}
                             style={styles.searchInput}
                         />
                     </View>
@@ -54,7 +56,7 @@ export default function AdminOrders({ navigation }: any) {
                                         <Text style={styles.orderId}>{order.id}</Text>
                                         <View style={[styles.statusBadge, { backgroundColor: styles_status.bg }]}>
                                             <View style={[styles.statusDot, { backgroundColor: styles_status.dot }]} />
-                                            <Text style={[styles.statusText, { color: styles_status.text }]}>{order.status.toUpperCase()}</Text>
+                                            <Text style={[styles.statusText, { color: styles_status.text }]}>{styles_status.label.toUpperCase()}</Text>
                                         </View>
                                     </View>
 
@@ -66,7 +68,7 @@ export default function AdminOrders({ navigation }: any) {
                                     <View style={styles.orderFooter}>
                                         <View style={styles.itemsBadge}>
                                             <ShoppingBag size={12} color="#999" />
-                                            <Text style={styles.itemsText}>{order.items} ÜRÜN</Text>
+                                            <Text style={styles.itemsText}>{order.items} {t.orders.itemsCount}</Text>
                                         </View>
                                         <Text style={styles.orderAmount}>{order.amount}</Text>
                                     </View>
