@@ -1,0 +1,13 @@
+{
+  "name": "ai-first-ecommerce",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "shared"
+  ],
+  "scripts": {
+    "web": "npm run dev -w apps/web",
+    "mobile": "npx expo start -w apps/mobile",
+    "supabase:gen": "supabase gen types typescript --project-id <project-id> > shared/types/supabase.ts"
+  }
+}
