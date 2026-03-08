@@ -6,6 +6,12 @@
 
 Next.js · React Native (Expo) · Supabase · Groq AI · TypeScript
 
+[![Live Demo](https://img.shields.io/badge/▶_Live_Demo-aura--store-black?style=for-the-badge&logo=vercel&logoColor=white)](https://aiecommerceplatformweb.vercel.app/)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Supabase](https://img.shields.io/badge/Supabase-Database-3FCF8E?style=flat-square&logo=supabase&logoColor=white)](https://supabase.com/)
+[![Groq AI](https://img.shields.io/badge/Groq-LLM-F55036?style=flat-square)](https://groq.com/)
+
 ---
 
 </div>
@@ -220,6 +226,8 @@ This project was developed for portfolio purposes.
 <div align="center">
 
 **Experience the future of fashion with AURA.** ✦
+
+🌐 **[Live Demo → aiecommerceplatformweb.vercel.app](https://aiecommerceplatformweb.vercel.app/)**
 
 *Developed by Osmancan.*
 
