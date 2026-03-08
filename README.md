@@ -2,7 +2,7 @@
 
 # ✦ AURA — AI-First E-Commerce Platform
 
-**Yapay zeka destekli, yeni nesil lüks moda e-ticaret platformu.**
+**AI-powered, next-generation luxury fashion e-commerce platform.**
 
 Next.js · React Native (Expo) · Supabase · Groq AI · TypeScript
 
@@ -10,186 +10,187 @@ Next.js · React Native (Expo) · Supabase · Groq AI · TypeScript
 
 </div>
 
-## 📖 Proje Hakkında
+## 📖 About the Project
 
-**AURA**, yapay zeka teknolojilerini e-ticaretin kalbine yerleştiren, lüks moda odaklı bir platformdur. Web mağazası ve mobil admin paneli olmak üzere iki ana bileşenden oluşur.
+**AURA** is a luxury fashion-oriented platform that places artificial intelligence technologies at the heart of e-commerce. It consists of two main components: a web store and a mobile admin panel.
 
-- 🌐 **Web Mağazası** — Müşterilere yönelik, AI destekli stil danışmanı, mood-bazlı ürün keşfi, sepet, favori listesi ve tam kapsamlı e-ticaret deneyimi
-- 📱 **Mobil Admin Paneli** — Mağaza sahiplerine özel, sipariş ve ürün yönetimi yapabilen iOS/Android uygulaması
+- 🌐 **Web Store** — Customer-facing shopping experience featuring AI-powered style consultants, mood-based product discovery, cart, wishlist, and a full-scale e-commerce experience.
+- 📱 **Mobile Admin Panel** — Specialized iOS/Android application for store owners to manage orders and products.
 
 ---
 
-## 🖼️ Ekran Görüntüleri
+## 🖼️ Screenshots
 
-### 📱 Mobil Admin Paneli
+### 📱 Mobile Admin Panel
 
 <div align="center">
 
-| Dashboard | Ürün Yönetimi | Sipariş Yönetimi |
+| Dashboard | Product Management | Order Management |
 |:---------:|:-------------:|:----------------:|
 | <img src="https://github.com/user-attachments/assets/DASHBOARD_IMAGE_ID" width="250"/> | <img src="https://github.com/user-attachments/assets/PRODUCTS_IMAGE_ID" width="250"/> | <img src="https://github.com/user-attachments/assets/ORDERS_IMAGE_ID" width="250"/> |
 
 </div>
 
 <!-- 
-  📸 Görselleri eklemek için:
-  1. GitHub'da README.md dosyasını düzenle (kalem ikonu)
-  2. Ekran görüntülerini düzenleme alanına sürükle-bırak yap
-  3. GitHub otomatik olarak URL oluşturacak
-  4. Yukarıdaki DASHBOARD_IMAGE_ID, PRODUCTS_IMAGE_ID, ORDERS_IMAGE_ID
-     kısımlarını oluşan URL'lerle değiştir
+  📸 To add images:
+  1. Edit README.md on GitHub (pencil icon)
+  2. Drag and drop screenshots into the editor area
+  3. GitHub will automatically generate a URL
+  4. Replace DASHBOARD_IMAGE_ID, PRODUCTS_IMAGE_ID, ORDERS_IMAGE_ID
+     above with the generated URLs.
 -->
 
 ---
 
-## 🛠️ Teknoloji Yığını
+## 🛠️ Technology Stack
 
-| Katman | Teknoloji |
+| Layer | Technology |
 |--------|-----------|
 | **Web Frontend** | Next.js 15, React 19, TailwindCSS |
-| **Mobil Uygulama** | React Native (Expo SDK 54) |
-| **Veritabanı & Auth** | Supabase (PostgreSQL + Auth + Storage) |
+| **Mobile App** | React Native (Expo SDK 54) |
+| **Database & Auth** | Supabase (PostgreSQL + Auth + Storage) |
 | **AI / LLM** | Groq SDK — Llama 3.3 70B Versatile |
-| **Vektör Arama** | pgvector (Supabase) |
-| **Dil** | TypeScript |
+| **Vector Search** | pgvector (Supabase) |
+| **Language** | TypeScript |
 | **Monorepo** | npm Workspaces |
 
 ---
 
-## 📂 Proje Yapısı
+## 📂 Project Structure
 
 ```
 AURA/
 ├── apps/
-│   ├── web/                          # Next.js Web Mağazası
+│   ├── web/                          # Next.js Web Store
 │   │   ├── src/
 │   │   │   ├── app/
-│   │   │   │   ├── (info)/           # Kurumsal sayfalar (about, faq, careers...)
-│   │   │   │   ├── admin/            # Web admin paneli
-│   │   │   │   ├── api/chat/         # AI Stil Danışmanı API endpoint
-│   │   │   │   ├── auth/             # Giriş / Kayıt sayfası
-│   │   │   │   ├── checkout/         # Ödeme sayfası
-│   │   │   │   ├── product/[id]/     # Ürün detay sayfası
-│   │   │   │   ├── stylist/          # AI Stil Danışmanı sayfası
-│   │   │   │   └── page.tsx          # Ana sayfa
-│   │   │   ├── components/           # UI bileşenleri (Navbar, Cart, Search...)
+│   │   │   │   ├── (info)/           # Corporate pages (about, faq, careers...)
+│   │   │   │   ├── admin/            # Web admin panel
+│   │   │   │   ├── api/chat/         # AI Stylist API endpoint
+│   │   │   │   ├── auth/             # Login / Registration page
+│   │   │   │   ├── checkout/         # Checkout page
+│   │   │   │   ├── product/[id]/     # Product details page
+│   │   │   │   ├── stylist/          # AI Stylist page
+│   │   │   │   └── page.tsx          # Home page
+│   │   │   ├── components/           # UI components (Navbar, Cart, Search...)
 │   │   │   ├── context/              # Global state (AppContext)
-│   │   │   ├── i18n/                 # Çoklu dil desteği (TR / EN)
-│   │   │   └── lib/                  # Supabase istemcisi
-│   │   └── .env.example              # Environment değişkenleri şablonu
+│   │   │   ├── i18n/                 # Multi-language support (TR / EN)
+│   │   │   └── lib/                  # Supabase client
+│   │   └── .env.example              # Environment variables template
 │   │
-│   └── mobile/                       # React Native Admin Paneli
-│       ├── App.tsx                   # Uygulama giriş noktası
+│   └── mobile/                       # React Native Admin Panel
+│       ├── App.tsx                   # App entry point
 │       ├── src/
-│       │   ├── navigation/           # Ekran yönlendirmeleri
+│       │   ├── navigation/           # Screen routing
 │       │   │   └── RootNavigator.tsx
 │       │   ├── screens/
 │       │   │   ├── auth/
-│       │   │   │   └── LoginScreen.tsx   # Admin giriş ekranı
+│       │   │   │   └── LoginScreen.tsx   # Admin login screen
 │       │   │   └── admin/
-│       │   │       ├── AdminDashboard.tsx # Dashboard (satış, sipariş, müşteri istatistikleri)
-│       │   │       ├── AdminOrders.tsx    # Sipariş yönetimi
-│       │   │       └── AdminProducts.tsx  # Ürün yönetimi
+│       │   │       ├── AdminDashboard.tsx # Dashboard (sales, orders, customer stats)
+│       │   │       ├── AdminOrders.tsx    # Order management
+│       │   │       └── AdminProducts.tsx  # Product management
 │       │   └── lib/
-│       │       └── supabase.ts       # Supabase istemcisi
-│       └── .env.example              # Environment değişkenleri şablonu
+│       │       └── supabase.ts       # Supabase client
+│       └── .env.example              # Environment variables template
 │
-├── shared/                           # Ortak kod (sabitler, tipler)
-│   ├── constants.ts                  # Mock ürünler ve sabitler
-│   └── index.ts                      # Export noktası
+├── shared/                           # Shared code (constants, types)
+│   ├── constants.ts                  # Mock products and constants
+│   └── index.ts                      # Export point
 │
 ├── supabase/
-│   └── migrations/                   # Veritabanı şeması
+│   └── migrations/                   # Database schema
 │       └── 20240307000000_init_schema.sql
 │
-├── docs/screenshots/                 # Ekran görüntüleri
+├── docs/screenshots/                 # Screenshots
 └── package.json                      # Monorepo root
 ```
 
 ---
 
-## ✨ Özellikler
+## ✨ Features
 
-### 🌐 Web Mağazası
-- **AI Stil Danışmanı** — Groq (Llama 3.3 70B) ile kişiselleştirilmiş stil önerileri
-- **Mood-Bazlı Keşif** — Minimalist, Cesur, Romantik, Avant-Garde gibi stil modları
-- **Ürün Kataloğu** — Supabase'den gerçek zamanlı ürün çekme, Mock fallback
-- **Vektör Benzerlik Araması** — pgvector ile AI destekli ürün eşleştirme
-- **Sepet & Favoriler** — Tam işlevsel sepet ve istek listesi
-- **Çoklu Dil** — Türkçe ve İngilizce dil desteği
-- **Dark / Light Mode** — Tema geçişi
-- **Kimlik Doğrulama** — Supabase Auth ile kayıt/giriş
-- **Kurumsal Sayfalar** — Hakkımızda, SSS, İletişim, Kariyer, Gizlilik, İade, Kargo, Sürdürülebilirlik, Kullanım Koşulları
-- **Admin Paneli** — Ürün, sipariş, müşteri ve ayar yönetimi
-- **Satıcı Paneli** — Satıcıların kendi ürünlerini yönetmesi
-- **Responsive Tasarım** — Mobil, tablet ve masaüstü uyumlu
+### 🌐 Web Store
+- **AI Stylist** — Personalized style recommendations using Groq (Llama 3.3 70B)
+- **Mood-Based Discovery** — Style modes such as Minimalist, Bold, Romantic, Avant-Garde
+- **Product Catalog** — Real-time product fetching from Supabase with Mock fallback
+- **Vector Similarity Search** — AI-powered product matching with pgvector
+- **Cart & Wishlist** — Fully functional shopping cart and wishlist
+- **Multi-Language** — Turkish and English language support
+- **Dark / Light Mode** — Theme switching
+- **Authentication** — Registration/Login via Supabase Auth
+- **Corporate Pages** — About Us, FAQ, Contact, Careers, Privacy, Returns, Shipping, Sustainability, Terms of Service
+- **Web Admin Panel** — Manage products, orders, customers, and settings
+- **Merchant Panel** — Allow sellers to manage their own products
+- **Responsive Design** — Fully compatible with mobile, tablet, and desktop
 
-### 📱 Mobil Admin Paneli
-- **Login Ekranı** — Supabase Auth + geliştirici hızlı geçiş
-- **Dashboard** — Toplam satış, sipariş sayısı, yeni müşteriler, iade oranı
-- **Sipariş Yönetimi** — Sipariş arama, filtreleme, durum takibi (Hazırlanıyor, Ödendi, Kargoda, Tamamlandı)
-- **Ürün Yönetimi** — Ürün listesi, stok durumu, kategori görünümü, durum etiketleri (Aktif, Düşük Stok, Tükendi)
-- **Güvenli Çıkış** — Onaylı logout
+### 📱 Mobile Admin Panel
+- **Login Screen** — Supabase Auth + Developer quick access
+- **Dashboard** — Statistics for total sales, order count, new customers, and return rate
+- **Order Management** — Search, filter, and track order status (Preparing, Paid, Shipped, Completed)
+- **Product Management** — Product list, stock status, category views, and status tags (Active, Low Stock, Out of Stock)
+- **Secure Logout** — Confirmation-based logout
+- **Multi-Language** — Turkish and English support
 
 ---
 
-## 🚀 Kurulum
+## 🚀 Installation
 
-### Gereksinimler
+### Requirements
 
 - **Node.js** 18+
 - **npm** 9+
-- **Expo Go** uygulaması (mobil test için)
-- **Supabase** hesabı
+- **Expo Go** app (for mobile testing)
+- **Supabase** account
 
-### 1. Projeyi klonla
+### 1. Clone the project
 
 ```bash
 git clone https://github.com/osmanncan/ai-first-ecommerce.git
 cd ai-first-ecommerce
 ```
 
-### 2. Bağımlılıkları yükle
+### 2. Install dependencies
 
 ```bash
 npm install
 ```
 
-### 3. Environment değişkenlerini ayarla
+### 3. Set up environment variables
 
-**Web için:**
+**For Web:**
 ```bash
 cp apps/web/.env.example apps/web/.env.local
 ```
-`apps/web/.env.local` dosyasını düzenle:
+Edit `apps/web/.env.local`:
 ```env
 NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
 GROQ_API_KEY=your-groq-api-key
 ```
 
-**Mobil için:**
+**For Mobile:**
 ```bash
 cp apps/mobile/.env.example apps/mobile/.env
 ```
-`apps/mobile/.env` dosyasını düzenle:
+Edit `apps/mobile/.env`:
 ```env
 EXPO_PUBLIC_SUPABASE_URL=your-supabase-url
 EXPO_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
 ```
 
-### 4. Veritabanını oluştur
+### 4. Create the database
 
-Supabase Dashboard'da SQL Editor'e git ve `supabase/migrations/20240307000000_init_schema.sql` dosyasındaki SQL'i çalıştır.
+Go to the SQL Editor in your Supabase Dashboard and run the SQL provided in `supabase/migrations/20240307000000_init_schema.sql`.
 
-### 5. Çalıştır
+### 5. Run the apps
 
 **Web:**
 ```bash
 npm run web
 ```
 
-**Mobil:**
+**Mobile:**
 ```bash
 cd apps/mobile
 npx expo start
@@ -197,38 +198,38 @@ npx expo start
 
 ---
 
-## 🗄️ Veritabanı Şeması
+## 🗄️ Database Schema
 
-| Tablo | Açıklama |
+| Table | Description |
 |-------|----------|
-| `products` | Ürünler (isim, fiyat, stok, kategori, vektör embedding) |
-| `profiles` | Kullanıcı profilleri (Supabase Auth ile bağlantılı) |
-| `orders` | Siparişler (kullanıcı, toplam, durum) |
+| `products` | Products (name, price, stock, category, vector embedding) |
+| `profiles` | User profiles (linked with Supabase Auth) |
+| `orders` | Orders (user, total, status) |
 
-**Özel Fonksiyon:** `match_products()` — pgvector ile vektör benzerlik araması yaparak AI destekli ürün eşleştirmesi sağlar.
-
----
-
-## 🔒 Güvenlik
-
-- ✅ API anahtarları `.env` dosyalarında tutulur, kaynak koda yazılmaz
-- ✅ `.env` dosyaları `.gitignore` ile GitHub'dan hariç tutulur
-- ✅ `.env.example` şablonları ile kurulum kolaylığı sağlanır
-- ✅ Supabase Row Level Security (RLS) desteği
-- ✅ Supabase Auth ile kimlik doğrulama
+**Custom Function:** `match_products()` — Provides AI-powered product matching by performing vector similarity search using pgvector.
 
 ---
 
-## 📜 Lisans
+## 🔒 Security
 
-Bu proje portföy amaçlı geliştirilmiştir.
+- ✅ API keys are stored in `.env` files, NOT hardcoded in source code.
+- ✅ `.env` files are excluded from GitHub via `.gitignore`.
+- ✅ `.env.example` templates provided for easy setup.
+- ✅ Support for Supabase Row Level Security (RLS).
+- ✅ Authentication handled by Supabase Auth.
+
+---
+
+## 📜 License
+
+This project was developed for portfolio purposes.
 
 ---
 
 <div align="center">
 
-**AURA** ile modanın geleceğini deneyimleyin. ✦
+**Experience the future of fashion with AURA.** ✦
 
-*Osmanca tarafından geliştirilmiştir.*
+*Developed by Osmancan.*
 
 </div>
