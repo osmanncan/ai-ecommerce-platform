@@ -5,6 +5,24 @@ import { MOCK_PRODUCTS } from "@ai-first/shared";
 
 export const dynamic = "force-dynamic";
 
+// --- Rate Limiter ---
+const RATE_LIMIT_WINDOW = 60 * 1000; // 1 dakika
+const RATE_LIMIT_MAX = 10; // dakikada max istek
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+
+function isRateLimited(ip: string): boolean {
+    const now = Date.now();
+    const entry = rateLimitMap.get(ip);
+
+    if (!entry || now > entry.resetAt) {
+        rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW });
+        return false;
+    }
+
+    entry.count++;
+    return entry.count > RATE_LIMIT_MAX;
+}
+
 function buildProductCatalog(products: any[]): string {
     return products.map(p =>
         `- [ID:${p.id}] ${p.name} | ${p.category} | ${p.price} TL | ${p.stock > 0 ? 'Stokta' : 'Tükendi'} | ${p.description}`
@@ -41,6 +59,15 @@ Sen bir moda uzmanısın ve AURA markasının premium değerlerini temsil ediyor
 
 export async function POST(req: NextRequest) {
     try {
+        // Rate limit kontrolü
+        const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+        if (isRateLimited(ip)) {
+            return NextResponse.json(
+                { error: "Çok fazla istek gönderdiniz. Lütfen biraz bekleyin." },
+                { status: 429 }
+            );
+        }
+
         const { messages } = await req.json();
 
         const apiKey = process.env.GROQ_API_KEY;

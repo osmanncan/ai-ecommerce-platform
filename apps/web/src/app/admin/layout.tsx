@@ -19,8 +19,40 @@ import { useAppContext } from "@/context/AppContext";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+    const [isAuthChecking, setIsAuthChecking] = useState(true);
     const router = useRouter();
     const pathname = usePathname();
+
+    useEffect(() => {
+        const checkAuth = async () => {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (!session) {
+                router.push("/auth");
+            } else {
+                setIsAuthChecking(false);
+            }
+        };
+        checkAuth();
+
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+            if (!session) {
+                router.push("/auth");
+            }
+        });
+
+        return () => subscription.unsubscribe();
+    }, [router]);
+
+    if (isAuthChecking) {
+        return (
+            <div className="min-h-screen bg-[#f8f9fa] flex items-center justify-center">
+                <div className="text-center">
+                    <div className="w-8 h-8 border-2 border-black border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+                    <p className="text-sm text-zinc-500 font-medium">Yetki kontrol ediliyor...</p>
+                </div>
+            </div>
+        );
+    }
 
     const menuItems = [
         { name: "Dashboard", icon: LayoutDashboard, path: "/admin" },
