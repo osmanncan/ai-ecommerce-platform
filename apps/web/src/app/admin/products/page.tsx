@@ -5,10 +5,10 @@ import { Plus, Search, Filter, Edit, Trash2, MoreVertical, Image as ImageIcon } 
 
 export default function AdminProducts() {
     const [products, setProducts] = useState([
-        { id: "PRD-001", name: "Premium İpek Gömlek", category: "Üst Giyim", price: 2450, stock: 45, status: "Aktif", image: "https://images.unsplash.com/photo-1598554747436-c9293d6a588f?q=80&w=200&h=200&fit=crop" },
-        { id: "PRD-002", name: "Minimalist Deri Çanta", category: "Çanta", price: 8900, stock: 12, status: "Azalıyor", image: "https://images.unsplash.com/photo-1584916201218-f4242ceb4809?q=80&w=200&h=200&fit=crop" },
-        { id: "PRD-003", name: "Oversize Kaşe Kaban", category: "Dış Giyim", price: 12500, stock: 0, status: "Tükendi", image: "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?q=80&w=200&h=200&fit=crop" },
-        { id: "PRD-004", name: "Klasik Kumaş Pantolon", category: "Alt Giyim", price: 1850, stock: 156, status: "Aktif", image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=200&h=200&fit=crop" },
+        { id: "PRD-001", name: "Premium İpek Gömlek", category: "Üst Giyim", price: 2450, stock: 45, status: "Aktif", image: "https://images.unsplash.com/photo-1598554747436-c9293d6a588f?auto=format&fit=crop&q=80&w=400" },
+        { id: "PRD-002", name: "Minimalist Deri Çanta", category: "Çanta", price: 8900, stock: 12, status: "Azalıyor", image: "https://images.unsplash.com/photo-1584916201218-f4242ceb4809?auto=format&fit=crop&q=80&w=400" },
+        { id: "PRD-003", name: "Oversize Kaşe Kaban", category: "Dış Giyim", price: 12500, stock: 0, status: "Tükendi", image: "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?auto=format&fit=crop&q=80&w=400" },
+        { id: "PRD-004", name: "Klasik Kumaş Pantolon", category: "Alt Giyim", price: 1850, stock: 156, status: "Aktif", image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&q=80&w=400" },
     ]);
 
     return (

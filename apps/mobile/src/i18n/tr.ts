@@ -1,17 +1,18 @@
 export const tr = {
     auth: {
         brandName: "AURA",
-        brandTag: "ADMİN PANELİ",
-        brandDesc: "Mağazanızı yönetin, siparişleri takip edin\nve satışlarınızı analiz edin.",
-        emailPlaceholder: "E-posta adresiniz",
-        passwordPlaceholder: "Şifreniz",
+        brandTag: "YÖNETİM PANELİ",
+        brandDesc: "Mağazanızı kolayca yönetin, siparişleri\nanlık takip edin ve satış verilerinizi analiz edin.",
+        emailPlaceholder: "E-posta adresinizi girin",
+        passwordPlaceholder: "Şifrenizi girin",
         loginButton: "GİRİŞ YAP",
-        quickAccess: "Hızlı Geçiş (Geliştirici)",
+        quickAccess: "Hızlı Erişim (Geliştirici)",
         or: "veya",
         error: "Hata",
-        errorFill: "E-posta ve şifre alanlarını doldurun.",
+        errorFill: "Lütfen e-posta ve şifre alanlarını doldurun.",
         loginFailed: "Giriş Başarısız",
-        genericError: "Bir sorun oluştu. Tekrar deneyin.",
+        genericError: "Bir sorun oluştu. Lütfen tekrar deneyin.",
+        footerText: "AURA © 2025 — Tüm hakları saklıdır.",
     },
     dashboard: {
         title: "DASHBOARD",
@@ -29,6 +30,11 @@ export const tr = {
         logoutTitle: "Çıkış Yap",
         logoutConfirm: "Çıkış yapmak istediğinize emin misiniz?",
         cancel: "İptal",
+        orderStatus: {
+            ready: "HAZIR",
+            paid: "ÖDENDİ",
+            shipping: "KARGO",
+        },
     },
     orders: {
         title: "SİPARİŞ YÖNETİMİ",

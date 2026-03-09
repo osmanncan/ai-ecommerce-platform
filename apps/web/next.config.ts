@@ -7,6 +7,18 @@ const nextConfig: NextConfig = {
                 protocol: 'https',
                 hostname: 'images.unsplash.com',
             },
+            {
+                protocol: 'https',
+                hostname: 'ui-avatars.com',
+            },
+            {
+                protocol: 'https',
+                hostname: '*.supabase.co',
+            },
+            {
+                protocol: 'https',
+                hostname: '*.supabase.in',
+            },
         ],
     },
     transpilePackages: ["@ai-first/shared"],
