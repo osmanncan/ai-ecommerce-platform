@@ -11,6 +11,7 @@ export const en = {
         error: "Error",
         errorFill: "Please fill in both email and password.",
         loginFailed: "Login Failed",
+        adminAccessRequired: "This mobile application is restricted to admin accounts.",
         genericError: "Something went wrong. Please try again.",
         footerText: "AURA © 2025 — All rights reserved.",
     },

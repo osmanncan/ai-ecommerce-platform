@@ -14,36 +14,30 @@ import {
     Bell,
     Search
 } from "lucide-react";
-import { supabase } from "@/lib/supabase";
 import { useAppContext } from "@/context/AppContext";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-    const [isAuthChecking, setIsAuthChecking] = useState(true);
     const router = useRouter();
     const pathname = usePathname();
+    const { user, isInitialized, logout, isAdmin } = useAppContext();
 
     useEffect(() => {
-        const checkAuth = async () => {
-            const { data: { session } } = await supabase.auth.getSession();
-            if (!session) {
-                router.push("/auth");
-            } else {
-                setIsAuthChecking(false);
-            }
-        };
-        checkAuth();
+        if (!isInitialized) {
+            return;
+        }
 
-        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-            if (!session) {
-                router.push("/auth");
-            }
-        });
+        if (!user) {
+            router.replace("/auth");
+            return;
+        }
 
-        return () => subscription.unsubscribe();
-    }, [router]);
+        if (!isAdmin) {
+            router.replace("/");
+        }
+    }, [isAdmin, isInitialized, router, user]);
 
-    if (isAuthChecking) {
+    if (!isInitialized || !user || !isAdmin) {
         return (
             <div className="min-h-screen bg-[#f8f9fa] flex items-center justify-center">
                 <div className="text-center">
@@ -91,7 +85,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                     </nav>
                     <div className="pt-8 border-t border-zinc-800">
                         <button
-                            onClick={() => { supabase.auth.signOut(); router.push("/"); }}
+                            onClick={async () => { await logout(); router.push("/"); }}
                             className="flex items-center gap-4 px-4 py-4 w-full text-zinc-500 hover:text-red-400 text-sm font-bold transition-colors"
                         >
                             <LogOut size={20} />
@@ -123,11 +117,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                         <div className="w-px h-6 bg-zinc-200" />
                         <div className="flex items-center gap-3 group cursor-pointer">
                             <div className="text-right">
-                                <p className="text-xs font-black uppercase tracking-tight">Osmancan</p>
+                                <p className="text-xs font-black uppercase tracking-tight">{user.name}</p>
                                 <p className="text-[10px] text-zinc-400 font-bold uppercase tracking-widest">Yönetici</p>
                             </div>
                             <div className="w-10 h-10 bg-zinc-100 rounded-full overflow-hidden border-2 border-transparent group-hover:border-black transition-all">
-                                <img src="https://ui-avatars.com/api/?name=Osmancan&background=000&color=fff" alt="Profile" />
+                                <img src={`https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=000&color=fff`} alt="Profile" />
                             </div>
                         </div>
                     </div>

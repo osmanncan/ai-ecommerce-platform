@@ -45,15 +45,13 @@ export default function AuthPage() {
                 const { error: signUpError, data } = await supabase.auth.signUp({
                     email,
                     password,
+                    options: {
+                        data: {
+                            full_name: name,
+                        },
+                    },
                 });
                 if (signUpError) throw signUpError;
-
-                if (data.user) {
-                    await supabase.from('profiles').insert({
-                        id: data.user.id,
-                        full_name: name,
-                    });
-                }
 
                 router.push("/");
             }

@@ -16,7 +16,7 @@ import {
 import { StatusBar } from 'expo-status-bar';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Mail, Lock, ArrowRight, Globe, Sparkles, Eye, EyeOff } from 'lucide-react-native';
-import { supabase } from '../../lib/supabase';
+import { useAuth } from '../../context/AuthContext';
 import { useTranslation } from '../../context/LocalizationContext';
 
 const { width, height } = Dimensions.get('window');
@@ -57,6 +57,7 @@ function FloatingOrb({ delay, size, left, top, color }: { delay: number; size: n
 
 export default function LoginScreen({ navigation }: any) {
     const { t, locale, toggleLocale } = useTranslation();
+    const { signIn, enableDemoAccess, isAdmin } = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
@@ -90,6 +91,12 @@ export default function LoginScreen({ navigation }: any) {
         ).start();
     }, []);
 
+    useEffect(() => {
+        if (isAdmin) {
+            navigation.replace('AdminDashboard');
+        }
+    }, [isAdmin, navigation]);
+
     const logoSpin = logoRotate.interpolate({ inputRange: [0, 1], outputRange: ['0deg', '360deg'] });
 
     const handleLogin = async () => {
@@ -100,21 +107,21 @@ export default function LoginScreen({ navigation }: any) {
 
         setLoading(true);
         try {
-            const { error } = await supabase.auth.signInWithPassword({
-                email: email.trim(),
-                password: password,
-            });
+            const { error } = await signIn(email, password);
 
             if (error) {
-                Alert.alert(t.auth.loginFailed, error.message);
-            } else {
-                navigation.replace('AdminDashboard');
+                Alert.alert(t.auth.loginFailed, error === 'Admin access is required.' ? t.auth.adminAccessRequired : error);
             }
         } catch (err) {
             Alert.alert(t.auth.error, t.auth.genericError);
         } finally {
             setLoading(false);
         }
+    };
+
+    const handleQuickAccess = () => {
+        enableDemoAccess();
+        navigation.replace('AdminDashboard');
     };
 
     return (
@@ -269,6 +276,16 @@ export default function LoginScreen({ navigation }: any) {
                                         )}
                                     </LinearGradient>
                                 </TouchableOpacity>
+
+                                {__DEV__ && (
+                                    <TouchableOpacity
+                                        style={styles.quickAccessLink}
+                                        onPress={handleQuickAccess}
+                                        activeOpacity={0.75}
+                                    >
+                                        <Text style={styles.quickAccessLinkText}>{t.auth.quickAccess}</Text>
+                                    </TouchableOpacity>
+                                )}
                             </View>
                         </Animated.View>
 
@@ -474,6 +491,22 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(255,255,255,0.2)',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    quickAccessLink: {
+        marginTop: 6,
+        alignSelf: 'center',
+        paddingVertical: 8,
+        paddingHorizontal: 14,
+        borderRadius: 999,
+        backgroundColor: 'rgba(139,92,246,0.08)',
+        borderWidth: 1,
+        borderColor: 'rgba(139,92,246,0.18)',
+    },
+    quickAccessLinkText: {
+        color: '#c4b5fd',
+        fontSize: 12,
+        fontWeight: '700',
+        letterSpacing: 0.6,
     },
     footer: {
         alignItems: 'center',

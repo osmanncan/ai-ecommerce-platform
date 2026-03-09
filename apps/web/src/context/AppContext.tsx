@@ -9,6 +9,7 @@ interface User {
     id: string;
     name: string;
     email: string;
+    role: 'admin' | 'customer';
 }
 
 interface CartItem {
@@ -38,6 +39,7 @@ interface AppContextType {
     wishlist: string[];
     toggleWishlist: (productId: string) => void;
     isLoggedIn: boolean;
+    isAdmin: boolean;
     logout: () => void;
     theme: 'light' | 'dark';
     toggleTheme: () => void;
@@ -76,7 +78,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
             if (session?.user) {
                 const { data: profile } = await supabase
                     .from('profiles')
-                    .select('*')
+                    .select('full_name, role')
                     .eq('id', session.user.id)
                     .single();
 
@@ -84,6 +86,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
                     id: session.user.id,
                     email: session.user.email || '',
                     name: profile?.full_name || session.user.email?.split('@')[0] || 'Aura Member',
+                    role: profile?.role === 'admin' ? 'admin' : 'customer',
                 });
             }
             setIsInitialized(true);
@@ -95,7 +98,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
             if (event === 'SIGNED_IN' && session) {
                 const { data: profile } = await supabase
                     .from('profiles')
-                    .select('*')
+                    .select('full_name, role')
                     .eq('id', session.user.id)
                     .single();
 
@@ -103,6 +106,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
                     id: session.user.id,
                     email: session.user.email || '',
                     name: profile?.full_name || session.user.email?.split('@')[0] || 'Aura Member',
+                    role: profile?.role === 'admin' ? 'admin' : 'customer',
                 });
             } else if (event === 'SIGNED_OUT') {
                 setUserState(null);
@@ -198,6 +202,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
             user, setUser, cart, addToCart, removeFromCart, decreaseCartQuantity, clearCart,
             wishlist, toggleWishlist, logout,
             isLoggedIn: !!user,
+            isAdmin: user?.role === 'admin',
             theme,
             toggleTheme,
             isInitialized,

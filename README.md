@@ -212,7 +212,8 @@ npx expo start
 - ✅ API keys are stored in `.env` files, NOT hardcoded in source code.
 - ✅ `.env` files are excluded from GitHub via `.gitignore`.
 - ✅ `.env.example` templates provided for easy setup.
-- ✅ Support for Supabase Row Level Security (RLS).
+- ✅ Role-based admin access is enforced on web and mobile admin surfaces.
+- ✅ Supabase Row Level Security (RLS) policies protect `products`, `profiles`, and `orders`.
 - ✅ Authentication handled by Supabase Auth.
 
 ---

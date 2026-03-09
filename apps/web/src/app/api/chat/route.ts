@@ -9,6 +9,8 @@ export const dynamic = "force-dynamic";
 const RATE_LIMIT_WINDOW = 60 * 1000; // 1 dakika
 const RATE_LIMIT_MAX = 10; // dakikada max istek
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+const MAX_MESSAGES = 12;
+const MAX_MESSAGE_LENGTH = 800;
 
 function isRateLimited(ip: string): boolean {
     const now = Date.now();
@@ -27,6 +29,38 @@ function buildProductCatalog(products: any[]): string {
     return products.map(p =>
         `- [ID:${p.id}] ${p.name} | ${p.category} | ${p.price} TL | ${p.stock > 0 ? 'Stokta' : 'Tükendi'} | ${p.description}`
     ).join('\n');
+}
+
+function cleanupRateLimitMap(now: number) {
+    if (rateLimitMap.size < 1000) {
+        return;
+    }
+
+    for (const [key, value] of rateLimitMap.entries()) {
+        if (now > value.resetAt) {
+            rateLimitMap.delete(key);
+        }
+    }
+}
+
+function validateMessages(messages: unknown) {
+    if (!Array.isArray(messages) || messages.length === 0 || messages.length > MAX_MESSAGES) {
+        return false;
+    }
+
+    return messages.every((message) => {
+        if (!message || typeof message !== 'object') {
+            return false;
+        }
+
+        const candidate = message as { role?: unknown; content?: unknown };
+        return (
+            (candidate.role === 'user' || candidate.role === 'assistant')
+            && typeof candidate.content === 'string'
+            && candidate.content.trim().length > 0
+            && candidate.content.length <= MAX_MESSAGE_LENGTH
+        );
+    });
 }
 
 const BASE_SYSTEM_PROMPT = `Sen AURA adlı lüks bir moda e-ticaret platformunun yapay zeka destekli stil danışmanısın.
@@ -60,6 +94,9 @@ Sen bir moda uzmanısın ve AURA markasının premium değerlerini temsil ediyor
 export async function POST(req: NextRequest) {
     try {
         // Rate limit kontrolü
+        const now = Date.now();
+        cleanupRateLimitMap(now);
+
         const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
         if (isRateLimited(ip)) {
             return NextResponse.json(
@@ -69,6 +106,13 @@ export async function POST(req: NextRequest) {
         }
 
         const { messages } = await req.json();
+
+        if (!validateMessages(messages)) {
+            return NextResponse.json(
+                { error: "Geçersiz sohbet verisi gönderildi." },
+                { status: 400 }
+            );
+        }
 
         const apiKey = process.env.GROQ_API_KEY;
 
@@ -102,9 +146,9 @@ export async function POST(req: NextRequest) {
 
         const groqMessages = [
             { role: "system" as const, content: systemPrompt },
-            ...messages.map((msg: any) => ({
+            ...messages.slice(-MAX_MESSAGES).map((msg: any) => ({
                 role: msg.role as "user" | "assistant",
-                content: msg.content,
+                content: msg.content.trim(),
             })),
         ];
 
@@ -121,7 +165,7 @@ export async function POST(req: NextRequest) {
     } catch (error: any) {
         console.error("Groq API Error:", error);
         return NextResponse.json(
-            { error: error.message || "AI servisi şu an yanıt veremiyor." },
+            { error: "AI servisi şu an yanıt veremiyor." },
             { status: 500 }
         );
     }

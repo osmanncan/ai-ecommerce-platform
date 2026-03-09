@@ -11,6 +11,7 @@ export const tr = {
         error: "Hata",
         errorFill: "Lütfen e-posta ve şifre alanlarını doldurun.",
         loginFailed: "Giriş Başarısız",
+        adminAccessRequired: "Bu mobil uygulama yalnızca admin hesapları içindir.",
         genericError: "Bir sorun oluştu. Lütfen tekrar deneyin.",
         footerText: "AURA © 2025 — Tüm hakları saklıdır.",
     },
